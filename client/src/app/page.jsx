@@ -5,8 +5,8 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
+  { name: 'About', href: '#' },
+  { name: 'Courses', href: '#' },
   { name: 'Marketplace', href: '#' },
   { name: 'Company', href: '#' },
 ]
@@ -47,7 +47,7 @@ export default function Home() {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+              <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
                 Log in <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
@@ -88,7 +88,7 @@ export default function Home() {
                   </div>
                   <div className="py-6">
                     <a
-                      href="#"
+                      href="/login"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Log in
@@ -133,7 +133,7 @@ export default function Home() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
-                  href="#"
+                  href="/signup"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Sign Up
