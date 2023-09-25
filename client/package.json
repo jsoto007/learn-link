@@ -4,7 +4,7 @@
   "private": true,
   "proxy": {
     "/api": {
-      "target": "http://localhost:5555", // Change this to match your Python server's address
+      "target": "http://localhost:5555",
       "pathRewrite": { "^/api": "" }
     }
   },
