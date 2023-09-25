@@ -5,11 +5,11 @@ export default function Login() {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
+      {/* <img
         className="mx-auto h-10 w-auto"
         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
         alt="Your Company"
-      />
+      /> */}
       <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
         Sign in to your account
       </h2>
@@ -50,7 +50,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember-me"
@@ -68,7 +68,7 @@ export default function Login() {
                 Forgot password?
               </a>
             </div>
-          </div>
+          </div> */}
 
           <div>
             <button
