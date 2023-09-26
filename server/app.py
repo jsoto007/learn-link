@@ -8,7 +8,6 @@ from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
-from models import db
 # Views go here!
 
 @app.route('/')

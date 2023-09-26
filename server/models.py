@@ -18,6 +18,9 @@ from config import db
 
 
 
+
+
+
 # Model template!
 # class NameOfClass( db.Model ):
 #   __tablename__ = 'name of class plural'
