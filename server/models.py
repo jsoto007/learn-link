@@ -79,10 +79,10 @@ class User( db.Model ):
     @validates( 'bio' )
     def validate_bio( self, key, bio ):
         if bio:
-            if type( bio ) is str and len( bio ) in range( 1, 251 ):
+            if type( bio ) is str and len( bio ) in range( 1, 501 ):
                 return bio
             else:
-                self.validation_errors.append( "Bio must be a string less than 250 characters" )
+                self.validation_errors.append( "Bio must be a string less than 500 characters" )
 
 # Password stuff for user model:
     @hybrid_property
@@ -144,10 +144,10 @@ class Course( db.Model ):
     
     @validates( 'description' )
     def validate_description( self, key, description ):
-        if type( description ) is str and description:
+        if type( description ) is str and len( description ) in range( 1, 501 ):
             return description
         else:
-            self.validation_errors.append( "Description must have a description with more than 0 characters" )
+            self.validation_errors.append( "Description must be a string less than 250 characters" )
 
 
 
