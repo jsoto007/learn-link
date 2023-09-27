@@ -190,6 +190,15 @@ class Lesson( db.Model ):
         else:
             self.validation_errors.append( "Title must have a title with more than 0 characters" )
 
+    @validates( 'content' )
+    def validate_content( self, key, content ):
+        if type( content ) is str and content:
+            return content
+        else:
+            self.validation_errors.append( "Content must have content with more than 0 characters" )
+
+    
+
 
 
 
