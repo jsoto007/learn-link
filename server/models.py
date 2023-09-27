@@ -41,6 +41,14 @@ class User( db.Model ):
         else:
             self.validation_errors.append( "Email must be a string with a valid email with '@' and '.'" )
 
+    @validates( 'username' )
+    def validate_username( self, key, username ):
+        if username:
+            if type( username ) is str and len( username ) in range( 3, 18 ):
+                return username
+            else:
+                self.validation_errors.append( "Username must be a string between 3 to 17 characters long." )
+
 # Password stuff for user model:
     @hybrid_property
     def password_hash( self ):
