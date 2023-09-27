@@ -118,6 +118,8 @@ class Course( db.Model ):
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
     lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
+    
+
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
     
