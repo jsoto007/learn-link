@@ -114,8 +114,8 @@ class Course( db.Model ):
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
-    user_id = db.Column( db.Integer, db.ForeignKey( 'user.id' ) )
-    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lesson.id' ) )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
@@ -162,8 +162,8 @@ class Lesson( db.Model ):
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
-    course_id = db.Column( db.Integer, db.ForeignKey( 'course.id' ) )
-    user_id = db.Column( db.Integer, db.ForeignKey( 'user.id' ) )
+    course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
     def __repr__( self ):
         return f"{{ Lesson { self.id } }}"
