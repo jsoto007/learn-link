@@ -94,5 +94,25 @@ class Lessons(Resource):
 
 api.add_resource(Lessons, '/lessons')
 
+class LessonByID(Resource):
+
+    #get one user by ID, may not even be necessary
+    def get(self, id):
+
+        lesson = Lesson.query.filter(Lesson.id == id).first()
+
+        if lesson:
+            response = make_response(lesson.to_dict(),200)
+        else:
+            response = make_response({
+            "error": "Course not found"
+            }, 404)
+
+        return response
+        
+api.add_resource(LessonByID, '/lesson/<int:id>')
+
+#---------------------------------------------------------------------
+
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
