@@ -80,5 +80,19 @@ class CourseByID(Resource):
         
 api.add_resource(CourseByID, '/course/<int:id>')
 
+#---------------------------------------------------------------------
+
+class Lessons(Resource):
+    
+    #post to users, DONE, unsure if i want to be able to see all users..
+    def get(self):
+        lessons = [lesson.to_dict() for lesson in Lesson.query.all()]
+
+        response = make_response(lessons, 200)
+
+        return response
+
+api.add_resource(Lessons, '/lessons')
+
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
