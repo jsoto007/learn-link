@@ -8,6 +8,10 @@ from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
+
+# Import Models here
+from models import db, User, Course, Lesson
+
 # Views go here!
 
 @app.route('/')

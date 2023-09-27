@@ -5,9 +5,7 @@ from sqlalchemy_serializer import SerializerMixin
 from flask import abort 
 from datetime import datetime
 
-from config import db, Bcrypt
-
-bcrypt = Bcrypt()
+from config import db, bcrypt
 
 # Models go here!
 class User( db.Model ):
