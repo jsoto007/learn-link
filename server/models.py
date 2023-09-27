@@ -218,6 +218,19 @@ class Lesson( db.Model ):
         else:
             self.validation_errors.append( "Duration must have duration with my than 0 characters" )
 
+    @validates( 'course_id' )
+    def validate_course( self, key, course_id ):
+        if Course.query.filter_by( id=course_id ):
+            return course_id
+        else:
+            self.validation_errors.append( "Course not found." )
+
+    @validates( 'user_id' )
+    def validate_user( self, key, user_id ):
+        if User.query.filter_by( id=user_id ).first():
+            return user_id
+        else:
+            self.validation_errors.append( "User not found." )
 
 
 # Model template!
