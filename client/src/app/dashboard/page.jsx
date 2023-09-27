@@ -1,12 +1,11 @@
-
+import NavBar from "../components/NavBar";
 
 function Dashboard() {
 
   return(
     <div>
-      <h1>
-        Hello from the dashbard!
-      </h1>
+      <NavBar />
+
     </div>
   )
 }
