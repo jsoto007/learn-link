@@ -114,3 +114,5 @@ if __name__ == '__main__':
         db.session.add_all( lessons )
         db.session.commit()
         print( 'Lessons created successfully!' )
+        
+        print( "Seeding complete!" )
