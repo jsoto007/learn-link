@@ -14,10 +14,21 @@ from models import db, User, Course, Lesson
 
 # Views go here!
 
-@app.route('/')
-def home():
-    return ''
+# @app.route('/')
+# def home():
+#     return ''
 
+class Users(Resource):
+    
+    #post to users, DONE, unsure if i want to be able to see all users..
+    def get(self):
+        users = [user.to_dict() for user in User.query.all()]
+
+        response = make_response(users, 200)
+
+        return response
+
+api.add_resource(Users, '/users')
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )

@@ -23,6 +23,7 @@ class User( db.Model ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
+    #Relationships
     courses = db.relationship( 'Course', backref = 'user' )
     lessons = association_proxy( 'courses', 'course' )
 
@@ -115,10 +116,12 @@ class Course( db.Model ):
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
+
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
     lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
-    
+    #Relationships
+
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
@@ -181,6 +184,9 @@ class Lesson( db.Model ):
 
     course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+
+    #Relationships
+
 
     def __repr__( self ):
         return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
