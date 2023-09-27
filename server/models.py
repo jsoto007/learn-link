@@ -151,25 +151,44 @@ class Course( db.Model ):
 
 
 class Lesson( db.Model ):
-  __tablename__ = 'lessons'
+    __tablename__ = 'lessons'
 
-  id = db.Column( db.Integer, primary_key = True )
-  created_at = db.Column( db.DateTime, server_default=db.func.now() )
-  updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
+    id = db.Column( db.Integer, primary_key = True )
+    created_at = db.Column( db.DateTime, server_default=db.func.now() )
+    updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
 
-  course_id = db.Column( db.Integer, db.ForeignKey( 'course.id' ) )
+    title = db.Column( db.String, nullable = False )
+    content = db.Column( db.String, nullable = False )
+    duration = db.Column( db.String, nulldable = False )
+    score = db.Column( db.Boolean, default = False )
 
-  def __repr__( self ):
-      return f"{{ Lesson { self.id } }}"
+    course_id = db.Column( db.Integer, db.ForeignKey( 'course.id' ) )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'user.id' ) )
 
-  validation_errors = []
+    def __repr__( self ):
+        return f"{{ Lesson { self.id } }}"
+    
+    def start_course( self ):
+        self.start_date = datetime.utcnow()
 
-  def get_validation_errors( self ):
-      return list( set( self.validation_errors ) )
+    def finish_course( self ):
+        self.end_date = datetime.utcnow()
 
-  @classmethod
-  def clear_validation_errors( cls ):
-      cls.validation_errors = []
+    validation_errors = []
+
+    def get_validation_errors( self ):
+        return list( set( self.validation_errors ) )
+
+    @classmethod
+    def clear_validation_errors( cls ):
+        cls.validation_errors = []
+
+    @validates( 'title' )
+    def validate_title( self, key, title ):
+        if type( title ) is str and title:
+            return title
+        else:
+            self.validation_errors.append( "Title must have a title with more than 0 characters" )
 
 
 
