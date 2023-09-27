@@ -114,8 +114,8 @@ class Course( db.Model ):
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
-    user_id = db.Column( db.Integer, ForeignKey = True )
-    lesson_id = db.Column( db.Integer, ForeignKey = True )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'user.id' ) )
+    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lesson.id' ) )
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
@@ -150,7 +150,26 @@ class Course( db.Model ):
             self.validation_errors.append( "Description must be a string less than 250 characters" )
 
 
+class Lesson( db.Model ):
+  __tablename__ = 'lessons'
 
+  id = db.Column( db.Integer, primary_key = True )
+  created_at = db.Column( db.DateTime, server_default=db.func.now() )
+  updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
+
+  course_id = db.Column( db.Integer, db.ForeignKey( 'course.id' ) )
+
+  def __repr__( self ):
+      return f"{{ Lesson { self.id } }}"
+
+  validation_errors = []
+
+  def get_validation_errors( self ):
+      return list( set( self.validation_errors ) )
+
+  @classmethod
+  def clear_validation_errors( cls ):
+      cls.validation_errors = []
 
 
 
@@ -178,19 +197,3 @@ class Course( db.Model ):
 #   @classmethod
 #   def clear_validation_errors( cls ):
 #       cls.validation_errors = []
-
-# Password stuff for user model:
-#   @hybrid_property
-#   def password_hash( self ):
-#       return self._password_hash
-
-#   @password_hash.setter
-#   def password_hash( self, password ):
-#       if ***password validation goes in here!*** :
-#           password_hash = bcrypt.generate_password_hash( password.encode( 'utf-8' ) )
-#           self._password_hash = password_hash.decode( 'utf-8' )
-#       else :
-#           self.validation_errors.append( "Password validation error goes here!" )
-
-#   def authenticate( self, password ):
-#       return bcrypt.check_password_hash( self._password_hash, password.encode( 'utf-8' ) )
