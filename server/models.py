@@ -156,6 +156,13 @@ class Course( db.Model ):
         else:
             self.validation_errors.append( "User not found." )
 
+    @validates( 'lesson_id' )
+    def validate_lesson( self, key, lesson_id ):
+        if Lesson.query.filter_by( id=lesson_id ):
+            return lesson_id
+        else:
+            self.validation_errors.append( "Lesson not found." )
+
 
 class Lesson( db.Model ):
     __tablename__ = 'lessons'
