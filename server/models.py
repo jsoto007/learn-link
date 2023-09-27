@@ -141,7 +141,13 @@ class Course( db.Model ):
             return title
         else:
             self.validation_errors.append( "Title must have a title with more than 0 characters" )
-        pass
+    
+    @validates( 'description' )
+    def validate_description( self, key, description ):
+        if type( description ) is str and description:
+            return description
+        else:
+            self.validation_errors.append( "Description must have a description with more than 0 characters" )
 
 
 
