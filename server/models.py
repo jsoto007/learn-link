@@ -149,6 +149,13 @@ class Course( db.Model ):
         else:
             self.validation_errors.append( "Description must be a string less than 250 characters" )
 
+    @validates( 'user_id' )
+    def validate_user( self, key, user_id ):
+        if User.query.filter_by( id=user_id ).first():
+            return user_id
+        else:
+            self.validation_errors.append( "User not found." )
+
 
 class Lesson( db.Model ):
     __tablename__ = 'lessons'
@@ -166,7 +173,7 @@ class Lesson( db.Model ):
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
     def __repr__( self ):
-        return f"{{ Lesson { self.id } }}"
+        return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
     
     def start_course( self ):
         self.start_date = datetime.utcnow()
