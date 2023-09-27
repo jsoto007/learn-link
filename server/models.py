@@ -23,6 +23,9 @@ class User( db.Model ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
+    courses = db.relationship( 'Course', backref = 'user' )
+    lessons = association_proxy( 'courses', 'course' )
+
     def __repr__( self ):
         return f"{{ User { self.id } }}"
 
