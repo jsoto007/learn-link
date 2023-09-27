@@ -4,7 +4,9 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 from flask import abort 
 
-from config import db
+from config import db, Bcrypt
+
+bcrypt = Bcrypt()
 
 # Models go here!
 class User( db.Model ):
@@ -39,7 +41,7 @@ class User( db.Model ):
 
     @password_hash.setter
     def password_hash( self, password ):
-        if ***password validation goes in here!*** :
+        if type( password ) is str and len( password ) in range( 5, 24 ):
             password_hash = bcrypt.generate_password_hash( password.encode( 'utf-8' ) )
             self._password_hash = password_hash.decode( 'utf-8' )
         else :
