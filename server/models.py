@@ -3,6 +3,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 from flask import abort 
+from datetime import datetime
 
 from config import db, Bcrypt
 
@@ -110,13 +111,20 @@ class Course( db.Model ):
     title = db.Column( db.String )
     description = db.Column( db.String )
     score = db.Column( db.Boolean, default = False )
-    start_date = db.Column( db.DateTime, onupdate=db.func.now() )
+    start_date = db.Column( db.DateTime, default = None, nullable = True )
+    end_date = db.Column( db.DateTime, default = None, nullable = True )
 
     user_id = db.Column( db.Integer, ForeignKey = True )
     lesson_id = db.Column( db.Integer, ForeignKey = True )
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id } }}"
+    
+    def start_course( self ):
+        self.start_date = datetime.utcnow()
+
+    def finish_course( self ):
+        self.end_date = datetime.utcnow()
 
     validation_errors = []
 
