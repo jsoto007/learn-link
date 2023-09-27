@@ -42,10 +42,24 @@ class UserByID(Resource):
             response = make_response({
             "error": "User not found"
             }, 404)
-            
+
         return response
         
 api.add_resource(UserByID, '/user/<int:id>')
+
+#---------------------------------------------------------------------
+
+class Courses(Resource):
+    
+    #post to users, DONE, unsure if i want to be able to see all users..
+    def get(self):
+        courses = [course.to_dict() for course in Course.query.all()]
+
+        response = make_response(courses, 200)
+
+        return response
+
+api.add_resource(Courses, '/courses')
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
