@@ -57,6 +57,14 @@ class User( db.Model ):
             else:
                 self.validation_errors.append( "First name must be a string" )
 
+    @validates( 'last_name' )
+    def validate_last_name( self, key, last_name ):
+        if last_name:
+            if type( last_name ) is str:
+                return last_name
+            else:
+                self.validation_errors.append( "Last name must be a string" )
+
 # Password stuff for user model:
     @hybrid_property
     def password_hash( self ):
