@@ -47,7 +47,15 @@ class User( db.Model ):
             if type( username ) is str and len( username ) in range( 3, 18 ):
                 return username
             else:
-                self.validation_errors.append( "Username must be a string between 3 to 17 characters long." )
+                self.validation_errors.append( "Username must be a string between 3 to 17 characters long" )
+
+    @validates( 'first_name' )
+    def validate_first_name( self, key, first_name ):
+        if first_name:
+            if type( first_name ) is str:
+                return first_name
+            else:
+                self.validation_errors.append( "First name must be a string" )
 
 # Password stuff for user model:
     @hybrid_property
