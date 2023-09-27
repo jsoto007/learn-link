@@ -34,6 +34,7 @@ class UserByID(Resource):
 
     #get one user by ID, may not even be necessary
     def get(self, id):
+
         user = User.query.filter(User.id == id).first()
 
         if user:
@@ -60,6 +61,24 @@ class Courses(Resource):
         return response
 
 api.add_resource(Courses, '/courses')
+
+class CourseByID(Resource):
+
+    #get one user by ID, may not even be necessary
+    def get(self, id):
+
+        course = Course.query.filter(Course.id == id).first()
+
+        if course:
+            response = make_response(course.to_dict(),200)
+        else:
+            response = make_response({
+            "error": "Course not found"
+            }, 404)
+
+        return response
+        
+api.add_resource(CourseByID, '/course/<int:id>')
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
