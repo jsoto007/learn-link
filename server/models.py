@@ -34,6 +34,13 @@ class User( db.Model ):
     def clear_validation_errors( cls ):
         cls.validation_errors = []
 
+    @validates( 'email' )
+    def validates_email( self, key, email ):
+        if type( email ) is str and email and '@' in email and '.' in email:
+            return email 
+        else:
+            self.validation_errors.append( "Email must be a string with a valid email with '@' and '.'" )
+
 # Password stuff for user model:
     @hybrid_property
     def password_hash( self ):
@@ -45,7 +52,7 @@ class User( db.Model ):
             password_hash = bcrypt.generate_password_hash( password.encode( 'utf-8' ) )
             self._password_hash = password_hash.decode( 'utf-8' )
         else :
-            self.validation_errors.append( "Password validation error goes here!" )
+            self.validation_errors.append( "Password must be a string between 5 & 30 characters." )
 
     def authenticate( self, password ):
         return bcrypt.check_password_hash( self._password_hash, password.encode( 'utf-8' ) )
