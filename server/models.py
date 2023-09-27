@@ -197,7 +197,12 @@ class Lesson( db.Model ):
         else:
             self.validation_errors.append( "Content must have content with more than 0 characters" )
 
-    
+    @validates( 'duration' )
+    def validate_duration( self, key, duration ):
+        if type( duration ) is str and duration:
+            return duration
+        else:
+            self.validation_errors.append( "Duration must have duration with my than 0 characters" )
 
 
 
