@@ -27,6 +27,10 @@ class User( db.Model, SerializerMixin ):
     # courses = db.relationship( 'Course', backref = 'user' )
     # lessons = association_proxy( 'courses', 'course' )
 
+    courses = db.relationship('Course', back_populates='users')
+    lessons = db.relationship('Lessons', back_populates='users')
+
+
     def __repr__( self ):
         return f"{{ User { self.id } }}"
 
@@ -117,10 +121,13 @@ class Course( db.Model, SerializerMixin ):
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
 
-    # user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
-    # lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
     #Relationships
+    lessons = db.relationship('Lessons', back_populates='courses')
+    users = db.relationship('Users', back_populates = 'courses')
+
 
 
     def __repr__( self ):
@@ -182,10 +189,14 @@ class Lesson( db.Model, SerializerMixin ):
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
-    # course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
-    # user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
     #Relationships
+    courses = db.relationship('Course', back_populates='lessons')
+    users = db.relationship('Users', back_populates = 'lessons')
+
+
 
 
     def __repr__( self ):

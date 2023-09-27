@@ -18,6 +18,8 @@ from models import db, User, Course, Lesson
 # def home():
 #     return ''
 
+#---------------------------------------------------------------------
+
 class Users(Resource):
     
     #post to users, DONE, unsure if i want to be able to see all users..
