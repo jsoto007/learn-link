@@ -108,7 +108,7 @@ class Course( db.Model ):
     created_at = db.Column( db.DateTime, server_default=db.func.now() )
     updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
 
-    title = db.Column( db.String )
+    title = db.Column( db.String, nullable = False )
     description = db.Column( db.String )
     score = db.Column( db.Boolean, default = False )
     start_date = db.Column( db.DateTime, default = None, nullable = True )
@@ -118,7 +118,7 @@ class Course( db.Model ):
     lesson_id = db.Column( db.Integer, ForeignKey = True )
 
     def __repr__( self ):
-        return f"{{ Recipe{ self.id } }}"
+        return f"{{ Recipe{ self.id }, Title: { self.title} }}"
     
     def start_course( self ):
         self.start_date = datetime.utcnow()
@@ -134,6 +134,14 @@ class Course( db.Model ):
     @classmethod
     def clear_validation_errors( cls ):
         cls.validation_errors = []
+
+    @validates( 'title' )
+    def validate_title( self, key, title ):
+        if type( title ) is str and title:
+            return title
+        else:
+            self.validation_errors.append( "Title must have a title with more than 0 characters" )
+        pass
 
 
 
