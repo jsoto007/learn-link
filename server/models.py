@@ -22,6 +22,7 @@ class User( db.Model ):
     first_name = db.Column( db.String )
     last_name = db.Column( db.String )
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
+    bio = db.Column( db.String )
 
     def __repr__( self ):
         return f"{{ User { self.id } }}"
@@ -73,6 +74,14 @@ class User( db.Model ):
                 return avatar
             else:
                 self.validation_errors.append( "Avatar must be string" )
+
+    @validates( 'bio' )
+    def validate_bio( self, key, bio ):
+        if bio:
+            if type( bio ) is str and len( bio ) in range( 1, 251 ):
+                return bio
+            else:
+                self.validation_errors.append( "Bio must be a string less than 250 characters" )
 
 # Password stuff for user model:
     @hybrid_property
