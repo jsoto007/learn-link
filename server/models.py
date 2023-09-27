@@ -14,7 +14,7 @@ class User( db.Model ):
 
     id = db.Column( db.Integer, primary_key = True )
     created_at = db.Column( db.DateTime, server_default=db.func.now() )
-    updated_at = db.Column( db.DateTime, onupdate=db.func.now() )
+    updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
     
     email = db.Column( db.String, nullable = False, unique = True ) 
     _password_hash = db.Column( db.String, nullable = False )
@@ -100,7 +100,32 @@ class User( db.Model ):
         return bcrypt.check_password_hash( self._password_hash, password.encode( 'utf-8' ) )
 
 
+class Course( db.Model ):
+    __tablename__ = 'courses'
 
+    id = db.Column( db.Integer, primary_key = True )
+    created_at = db.Column( db.DateTime, server_default=db.func.now() )
+    updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
+
+    title = db.Column( db.String )
+    description = db.Column( db.String )
+    score = db.Column( db.Boolean, default = False )
+    start_date = db.Column( db.DateTime, onupdate=db.func.now() )
+
+    user_id = db.Column( db.Integer, ForeignKey = True )
+    lesson_id = db.Column( db.Integer, ForeignKey = True )
+
+    def __repr__( self ):
+        return f"{{ Recipe{ self.id } }}"
+
+    validation_errors = []
+
+    def get_validation_errors( self ):
+        return list( set( self.validation_errors ) )
+
+    @classmethod
+    def clear_validation_errors( cls ):
+        cls.validation_errors = []
 
 
 
@@ -116,7 +141,7 @@ class User( db.Model ):
 
 #   id = db.Column( db.Integer, primary_key = True )
 #   created_at = db.Column( db.DateTime, server_default=db.func.now() )
-#   updated_at = db.Column( db.DateTime, onupdate=db.func.now() )
+#   updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
 
 #   table_column_id = db.Column( db.Integer, db.ForeignKey( 'table.id' ) )
 
