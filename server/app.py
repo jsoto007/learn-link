@@ -30,5 +30,22 @@ class Users(Resource):
 
 api.add_resource(Users, '/users')
 
+class UserByID(Resource):
+
+    #get one user by ID, may not even be necessary
+    def get(self, id):
+        user = User.query.filter(User.id == id).first()
+
+        if user:
+            response = make_response(user.to_dict(),200)
+        else:
+            response = make_response({
+            "error": "User not found"
+            }, 404)
+            
+        return response
+        
+api.add_resource(UserByID, '/user/<int:id>')
+
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
