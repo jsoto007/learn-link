@@ -21,6 +21,7 @@ class User( db.Model ):
     username = db.Column( db.String, unique = True )
     first_name = db.Column( db.String )
     last_name = db.Column( db.String )
+    avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
 
     def __repr__( self ):
         return f"{{ User { self.id } }}"
@@ -64,6 +65,14 @@ class User( db.Model ):
                 return last_name
             else:
                 self.validation_errors.append( "Last name must be a string" )
+
+    @validates( 'avatar' )
+    def validate_avatar( self, key, avatar ):
+        if avatar:
+            if type( avatar ) is str:
+                return avatar
+            else:
+                self.validation_errors.append( "Avatar must be string" )
 
 # Password stuff for user model:
     @hybrid_property
