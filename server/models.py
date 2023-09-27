@@ -159,7 +159,7 @@ class Lesson( db.Model ):
 
     title = db.Column( db.String, nullable = False )
     content = db.Column( db.String, nullable = False )
-    duration = db.Column( db.String, nulldable = False )
+    duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
     course_id = db.Column( db.Integer, db.ForeignKey( 'course.id' ) )
@@ -203,9 +203,6 @@ class Lesson( db.Model ):
             return duration
         else:
             self.validation_errors.append( "Duration must have duration with my than 0 characters" )
-
-
-
 
 
 
