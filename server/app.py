@@ -213,6 +213,32 @@ class Lessons(Resource):
         response = make_response(lessons, 200)
 
         return response
+    
+    def post(self):
+        data = request.get_json()
+        try:
+            # In this we could likely include something to test for admin, like if data[user.id = 1] for example
+            new_lesson = Lesson(
+                created_at = datetime.utcnow(),
+                updated_at = datetime.utcnow(),
+                title = data['title'],
+                content = data['content'],
+                duration = data['duration'],
+                score = data['score'],
+                user_id = data['user_id'],
+            )
+
+            # Also this is where we'll need to do a conversion and make sure we're sending in 0 or 1 (from front end form) and see how it comes in here.
+            # Postman accepted "score" : 1
+            # Will need to adjust the end_date and start_date to be a changed during a patch.
+
+            db.session.add(new_lesson)
+
+            db.session.commit()
+            return make_response(new_lesson.to_dict(), 201)
+            
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
 api.add_resource(Lessons, '/lessons')
 
