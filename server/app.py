@@ -24,7 +24,7 @@ from models import db, User, Course, Lesson
 class Users(Resource):
     
     def get(self):
-        users = [user.to_dict() for user in User.query.all()]
+        users = [user.to_dict(rules =('-lessons.courses.users',)) for user in User.query.all()]
 
         response = make_response(users, 200)
 
