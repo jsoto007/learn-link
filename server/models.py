@@ -129,7 +129,7 @@ class Course( db.Model, SerializerMixin ):
 
 
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
-    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
+    # lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
     #Relationships
     lessons = db.relationship('Lesson', back_populates='courses')
@@ -203,7 +203,7 @@ class Lesson( db.Model, SerializerMixin ):
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
-    # course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
+    course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
     #Relationships
