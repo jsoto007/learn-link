@@ -118,7 +118,7 @@ class Courses(Resource):
     
 
     def get(self):
-        courses = [course.to_dict() for course in Course.query.all()]
+        courses = [course.to_dict( rules = ('-users._password_hash','-users.bio', '-users.avatar', '-users.created_at',)) for course in Course.query.all()]
 
         response = make_response(courses, 200)
 
