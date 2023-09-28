@@ -279,7 +279,21 @@ class LessonByID(Resource):
             "error": "Lesson not found"
             }, 404)
             return response
-        
+    
+
+    def delete(self,id):
+        lesson = Lesson.query.filter(Lesson.id == id).first()
+        if lesson:
+            #May need to do a cascade delete to not have any information linger
+            db.session.delete(lesson)
+            db.session.commit()
+            return make_response({"message":"Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+            "error": "Lesson not found"
+            }, 404)
+            return response
+
 api.add_resource(LessonByID, '/lesson/<int:id>')
 
 #---------------------------------------------------------------------
