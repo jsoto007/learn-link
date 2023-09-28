@@ -39,8 +39,8 @@ class Users(Resource):
                 email = data['email'],
                 _password_hash = data['password'],
                 username = data['username'],
-                first_name = data['firstName'],
-                last_name = data['lastName'],
+                first_name = data['first_name'],
+                last_name = data['last_name'],
                 avatar = data['avatar'],
                 bio = data['bio']
             )
@@ -121,6 +121,34 @@ class Courses(Resource):
         response = make_response(courses, 200)
 
         return response
+    
+    def post(self):
+        data = request.get_json()
+        try:
+            # In this we could likely include something to test for admin, like if data[user.id = 1] for example
+            new_course = Course(
+                created_at = datetime.utcnow(),
+                updated_at = datetime.utcnow(),
+                title = data['title'],
+                description = data['description'],
+                score = data['score'],
+                start_date = datetime.utcnow(),
+                end_date = datetime.utcnow(),
+                user_id = data['user_id'],
+                lesson_id = data['lesson_id']
+            )
+
+            # Also this is where we'll need to do a conversion and make sure we're sending in 0 or 1 (from front end form) and see how it comes in here.
+            # Postman accepted "score" : 1
+            # Will need to adjust the end_date and start_date to be a changed during a patch.
+
+            db.session.add(new_course)
+
+            db.session.commit()
+            return make_response(new_course.to_dict(), 201)
+            
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
 api.add_resource(Courses, '/courses')
 
