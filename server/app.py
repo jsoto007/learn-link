@@ -50,8 +50,8 @@ class Users(Resource):
             new_user.password_hash = new_user._password_hash
 
             db.session.commit()
-            response = make_response(new_user.to_dict(), 201)
-            return response
+            return make_response(new_user.to_dict(), 201)
+            
         except ValueError:
             return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
@@ -73,6 +73,27 @@ class UserByID(Resource):
             }, 404)
 
         return response
+    
+    def patch(self, id):
+        user = User.query.filter(User.id == id).first()
+        if user:
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(user, key, data[key])
+                db.session.add(user)
+                db.session.commit()
+
+                return make_response(user.to_dict(), 202)
+                
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
+        else:
+            response = make_response({
+            "error": "User not found"
+            }, 404)
+            return response
         
 api.add_resource(UserByID, '/user/<int:id>')
 
