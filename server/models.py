@@ -31,7 +31,11 @@ class User( db.Model, SerializerMixin ):
     lessons = db.relationship('Lesson', back_populates='users')
 
     #Serialization Rules
-    serialize_rules = ('-lessons.users', '-courses.users', '-courses.user_id',  )
+    serialize_rules = (
+        '-lessons.users', 
+        '-courses.users', 
+        '-courses.user_id',  
+        )
 
 
     def __repr__( self ):
@@ -132,7 +136,13 @@ class Course( db.Model, SerializerMixin ):
     users = db.relationship('User', back_populates = 'courses')
 
     #Serialization Rules
-    serialize_rules = ('-lessons.courses', '-lessons.user_id', '-lessons.users', '-users.courses', '-users.lessons')
+    serialize_rules = (
+        '-lessons.courses', 
+        '-lessons.user_id', 
+        '-lessons.users', 
+        '-users.courses', 
+        '-users.lessons'
+        )
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
