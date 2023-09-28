@@ -211,7 +211,9 @@ class Lesson( db.Model, SerializerMixin ):
     users = db.relationship('User', back_populates = 'lessons')
 
     #Serialization Rules
-    serialize_rules = ('-courses.lessons', '-users.lessons' )
+    serialize_rules = (
+        '-courses.lessons', 
+        '-users.lessons' )
 
 
     # def __repr__( self ):
