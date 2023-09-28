@@ -166,6 +166,27 @@ class CourseByID(Resource):
             }, 404)
 
         return response
+    
+    def patch(self, id):
+        course = Course.query.filter(Course.id == id).first()
+        if course:
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(course, key, data[key])
+                db.session.add(course)
+                db.session.commit()
+
+                return make_response(course.to_dict(), 202)
+                
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
+        else:
+            response = make_response({
+            "error": "Course not found"
+            }, 404)
+            return response
         
 api.add_resource(CourseByID, '/course/<int:id>')
 
