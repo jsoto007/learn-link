@@ -22,7 +22,6 @@ from models import db, User, Course, Lesson
 
 class Users(Resource):
     
-    #post to users, DONE, unsure if i want to be able to see all users..
     def get(self):
         users = [user.to_dict() for user in User.query.all()]
 
@@ -34,7 +33,6 @@ api.add_resource(Users, '/users')
 
 class UserByID(Resource):
 
-    #get one user by ID, may not even be necessary
     def get(self, id):
 
         user = User.query.filter(User.id == id).first()
@@ -54,7 +52,7 @@ api.add_resource(UserByID, '/user/<int:id>')
 
 class Courses(Resource):
     
-    #post to users, DONE, unsure if i want to be able to see all users..
+
     def get(self):
         courses = [course.to_dict() for course in Course.query.all()]
 
@@ -66,7 +64,6 @@ api.add_resource(Courses, '/courses')
 
 class CourseByID(Resource):
 
-    #get one user by ID, may not even be necessary
     def get(self, id):
 
         course = Course.query.filter(Course.id == id).first()
@@ -86,7 +83,6 @@ api.add_resource(CourseByID, '/course/<int:id>')
 
 class Lessons(Resource):
     
-    #post to users, DONE, unsure if i want to be able to see all users..
     def get(self):
         lessons = [lesson.to_dict() for lesson in Lesson.query.all()]
 
@@ -98,7 +94,6 @@ api.add_resource(Lessons, '/lessons')
 
 class LessonByID(Resource):
 
-    #get one user by ID, may not even be necessary
     def get(self, id):
 
         lesson = Lesson.query.filter(Lesson.id == id).first()

@@ -28,7 +28,10 @@ class User( db.Model, SerializerMixin ):
     # lessons = association_proxy( 'courses', 'course' )
 
     courses = db.relationship('Course', back_populates='users')
-    lessons = db.relationship('Lessons', back_populates='users')
+    lessons = db.relationship('Lesson', back_populates='users')
+
+    #Serialization Rules
+    serialize_rules = ('-lessons.users', '-courses.users', '-courses.user_id',  )
 
 
     def __repr__( self ):
@@ -125,10 +128,11 @@ class Course( db.Model, SerializerMixin ):
     lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
     #Relationships
-    lessons = db.relationship('Lessons', back_populates='courses')
-    users = db.relationship('Users', back_populates = 'courses')
+    lessons = db.relationship('Lesson', back_populates='courses')
+    users = db.relationship('User', back_populates = 'courses')
 
-
+    #Serialization Rules
+    serialize_rules = ('-lessons.courses', '-lessons.user_id', '-lessons.users', '-users.courses', '-users.lessons')
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
@@ -189,18 +193,19 @@ class Lesson( db.Model, SerializerMixin ):
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
-    course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
+    # course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
     #Relationships
     courses = db.relationship('Course', back_populates='lessons')
-    users = db.relationship('Users', back_populates = 'lessons')
+    users = db.relationship('User', back_populates = 'lessons')
+
+    #Serialization Rules
+    serialize_rules = ('-courses.lessons', '-users.lessons' )
 
 
-
-
-    def __repr__( self ):
-        return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
+    # def __repr__( self ):
+    #     return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
     
     def start_course( self ):
         self.start_date = datetime.utcnow()
