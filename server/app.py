@@ -188,6 +188,19 @@ class CourseByID(Resource):
             }, 404)
             return response
         
+    def delete(self,id):
+        course = Course.query.filter(Course.id == id).first()
+        if course:
+            #May need to do a cascade delete to not have any information linger
+            db.session.delete(course)
+            db.session.commit()
+            return make_response({"message":"Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+            "error": "Course not found"
+            }, 404)
+            return response
+        
 api.add_resource(CourseByID, '/course/<int:id>')
 
 #---------------------------------------------------------------------
