@@ -47,6 +47,8 @@ class Users(Resource):
 
             db.session.add(new_user)
 
+            #may need to do a tweak for updated_at , simple fix
+
             new_user.password_hash = new_user._password_hash
 
             db.session.commit()
@@ -140,7 +142,7 @@ class Courses(Resource):
 
             # Also this is where we'll need to do a conversion and make sure we're sending in 0 or 1 (from front end form) and see how it comes in here.
             # Postman accepted "score" : 1
-            # Will need to adjust the end_date and start_date to be a changed during a patch.
+            # Will need to adjust the end_date and updated_at to be a changed during a patch.
 
             db.session.add(new_course)
 
@@ -230,7 +232,7 @@ class Lessons(Resource):
 
             # Also this is where we'll need to do a conversion and make sure we're sending in 0 or 1 (from front end form) and see how it comes in here.
             # Postman accepted "score" : 1
-            # Will need to adjust the end_date and start_date to be a changed during a patch.
+            # Will need to adjust the end_date and updated_at to be a changed during a patch.
 
             db.session.add(new_lesson)
 
@@ -256,6 +258,27 @@ class LessonByID(Resource):
             }, 404)
 
         return response
+    
+    def patch(self, id):
+        lesson = Lesson.query.filter(Lesson.id == id).first()
+        if lesson:
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(lesson, key, data[key])
+                db.session.add(lesson)
+                db.session.commit()
+
+                return make_response(lesson.to_dict(), 202)
+                
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
+        else:
+            response = make_response({
+            "error": "Lesson not found"
+            }, 404)
+            return response
         
 api.add_resource(LessonByID, '/lesson/<int:id>')
 
