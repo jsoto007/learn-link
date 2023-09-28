@@ -95,6 +95,19 @@ class UserByID(Resource):
             }, 404)
             return response
         
+    def delete(self,id):
+        user = User.query.filter(User.id == id).first()
+        if user:
+            #May need to do a cascade delete to not have any information linger
+            db.session.delete(user)
+            db.session.commit()
+            return make_response({"message":"Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+            "error": "User not found"
+            }, 404)
+            return response
+        
 api.add_resource(UserByID, '/user/<int:id>')
 
 #---------------------------------------------------------------------
