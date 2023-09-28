@@ -161,7 +161,7 @@ class CourseByID(Resource):
         course = Course.query.filter(Course.id == id).first()
 
         if course:
-            response = make_response(course.to_dict(),200)
+            response = make_response(course.to_dict( rules = ('-users._password_hash','-users.bio', '-users.avatar', '-users.created_at',)),200)
         else:
             response = make_response({
             "error": "Course not found"
@@ -210,8 +210,8 @@ api.add_resource(CourseByID, '/course/<int:id>')
 class Lessons(Resource):
     
     def get(self):
-        lessons = [lesson.to_dict() for lesson in Lesson.query.all()]
-
+        lessons = [lesson.to_dict(rules = ('-courses.users','-users.courses', '-users._password_hash','-users.bio', '-users.avatar', '-users.created_at', '-courses.created_at', '-courses.start_date','-courses.end_date', '-courses.score',)) for lesson in Lesson.query.all()]
+        #Can probably forego the user_id and courses_id in the to_dict too as it's already in there
         response = make_response(lessons, 200)
 
         return response
