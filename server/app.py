@@ -8,6 +8,7 @@ from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
+from datetime import datetime
 
 # Import Models here
 from models import db, User, Course, Lesson
@@ -28,6 +29,33 @@ class Users(Resource):
         response = make_response(users, 200)
 
         return response
+    
+    def post(self):
+        data = request.get_json()
+        try:
+            new_user = User(
+                created_at = datetime.utcnow(),
+                updated_at = datetime.utcnow(),
+                email = data['email'],
+                _password_hash = data['password'],
+                username = data['username'],
+                first_name = data['firstName'],
+                last_name = data['lastName'],
+                avatar = data['avatar'],
+                bio = data['bio']
+            )
+
+            db.session.add(new_user)
+
+            new_user.password_hash = new_user._password_hash
+
+            db.session.commit()
+            response = make_response(new_user.to_dict(), 201)
+            return response
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
+
 
 api.add_resource(Users, '/users')
 
