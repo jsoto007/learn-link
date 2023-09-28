@@ -251,7 +251,8 @@ class LessonByID(Resource):
         lesson = Lesson.query.filter(Lesson.id == id).first()
 
         if lesson:
-            response = make_response(lesson.to_dict(),200)
+            response = make_response(lesson.to_dict(rules = ('-courses.users','-users.courses', '-users._password_hash','-users.bio', '-users.avatar', '-users.created_at', '-courses.created_at', '-courses.start_date','-courses.end_date', '-courses.score',)),200)
+            #Can probably forego the user_id and courses_id in the to_dict too as it's already in there
         else:
             response = make_response({
             "error": "Course not found"
