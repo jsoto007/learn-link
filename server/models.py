@@ -8,7 +8,7 @@ from datetime import datetime
 from config import db, bcrypt
 
 # Models go here!
-class User( db.Model ):
+class User( db.Model, SerializerMixin ):
     __tablename__ = 'users'
 
     id = db.Column( db.Integer, primary_key = True )
@@ -23,8 +23,23 @@ class User( db.Model ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
-    courses = db.relationship( 'Course', backref = 'user' )
-    lessons = association_proxy( 'courses', 'course' )
+    
+
+    #Relationships
+    # courses = db.relationship( 'Course', backref = 'user' )
+    # lessons = association_proxy( 'courses', 'course' )
+
+    courses = db.relationship('Course', back_populates='users')
+    lessons = db.relationship('Lesson', back_populates='users')
+
+    #Serialization Rules
+    serialize_rules = (
+        '-lessons.users', 
+        '-courses.users', 
+        '-courses.user_id',
+        '-courses.lessons'
+        )
+
 
     def __repr__( self ):
         return f"{{ User { self.id } }}"
@@ -102,7 +117,7 @@ class User( db.Model ):
         return bcrypt.check_password_hash( self._password_hash, password.encode( 'utf-8' ) )
 
 
-class Course( db.Model ):
+class Course( db.Model, SerializerMixin ):
     __tablename__ = 'courses'
 
     id = db.Column( db.Integer, primary_key = True )
@@ -115,10 +130,22 @@ class Course( db.Model ):
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
-    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
-    lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
 
-    
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    # lesson_id = db.Column( db.Integer, db.ForeignKey( 'lessons.id' ) )
+
+    #Relationships
+    lessons = db.relationship('Lesson', back_populates='courses')
+    users = db.relationship('User', back_populates = 'courses')
+
+    #Serialization Rules
+    serialize_rules = (
+        '-lessons.courses', 
+        '-lessons.user_id', 
+        '-lessons.users', 
+        '-users.courses', 
+        '-users.lessons'
+        )
 
     def __repr__( self ):
         return f"{{ Recipe{ self.id }, Title: { self.title} }}"
@@ -167,7 +194,7 @@ class Course( db.Model ):
             self.validation_errors.append( "Lesson not found." )
 
 
-class Lesson( db.Model ):
+class Lesson( db.Model, SerializerMixin ):
     __tablename__ = 'lessons'
 
     id = db.Column( db.Integer, primary_key = True )
@@ -182,8 +209,17 @@ class Lesson( db.Model ):
     course_id = db.Column( db.Integer, db.ForeignKey( 'courses.id' ) )
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
 
-    def __repr__( self ):
-        return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
+    #Relationships
+    courses = db.relationship('Course', back_populates='lessons')
+    users = db.relationship('User', back_populates = 'lessons')
+
+    #Serialization Rules
+    serialize_rules = (
+        '-courses.lessons', 
+        '-users.lessons' )
+
+    # def __repr__( self ):
+    #     return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
     
     def start_course( self ):
         self.start_date = datetime.utcnow()

@@ -53,7 +53,7 @@ if __name__ == '__main__':
             start_date = None,
             end_date = None,
             user_id = u1.id,
-            lesson_id = l1.id,
+            lesson_id = 1,
         )
 
         c2 = Course(
@@ -63,7 +63,7 @@ if __name__ == '__main__':
             start_date = None,
             end_date = None,
             user_id = u2.id,
-            lesson_id = l5.id,
+            lesson_id = 5,
         )
         db.session.add_all( [ c1, c2 ] )
         db.session.commit()
