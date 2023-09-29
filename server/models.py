@@ -218,7 +218,6 @@ class Lesson( db.Model, SerializerMixin ):
         '-courses.lessons', 
         '-users.lessons' )
 
-
     # def __repr__( self ):
     #     return f"{{ Lesson { self.id }, Course: { self.course.title } Lesson:{ self.lesson.title } }}"
     
