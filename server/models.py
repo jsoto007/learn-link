@@ -37,6 +37,7 @@ class User( db.Model, SerializerMixin ):
         '-lessons.users', 
         '-courses.users', 
         '-courses.user_id',
+        '-courses.lessons'
         )
 
 
