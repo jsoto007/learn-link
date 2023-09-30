@@ -31,13 +31,17 @@ class User( db.Model, SerializerMixin ):
 
     courses = db.relationship('Course', back_populates='users')
     lessons = db.relationship('Lesson', back_populates='users')
+    chat_history = db.relationship('ChatHistory', back_populates='user')
+
 
     #Serialization Rules
     serialize_rules = (
         '-lessons.users', 
         '-courses.users', 
         '-courses.user_id',
-        '-courses.lessons'
+        '-courses.lessons',
+        '-chat_history.user',
+        
         )
 
 
@@ -281,7 +285,9 @@ class ChatHistory(db.Model, SerializerMixin):
     bot_response = db.Column(db.String(255))
 
     user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    user = db.relationship('User', back_populates='chat_history')
 
+    serialize_rules = ('-user.chat_history', )
 
 # Model template!
 # class NameOfClass( db.Model ):
