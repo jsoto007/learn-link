@@ -272,6 +272,17 @@ class Lesson( db.Model, SerializerMixin ):
             self.validation_errors.append( "User not found." )
 
 
+
+class ChatHistory(db.Model, SerializerMixin):
+    __tablename__ = 'chat_histories'
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_message = db.Column(db.String(255))
+    bot_response = db.Column(db.String(255))
+
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+
+
 # Model template!
 # class NameOfClass( db.Model ):
 #   __tablename__ = 'name of class plural'
