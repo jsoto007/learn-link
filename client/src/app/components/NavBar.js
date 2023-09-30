@@ -18,7 +18,7 @@ function NavBar() {
  
       </div>
 
-      <button class=" focus:outline-none  focus:bg-[#0f4880]/90 focus:text-white mx-4 hover:bg-slate-200 rounded-md active:bg-slate-300 px-1 py-1 dark:hover:bg-slate-500 dark:active:bg-slate-600 dark:focus:bg-slate-700">
+      <button class=" focus:outline-none  focus:bg-[#0f4880] focus:text-white mx-4 hover:bg-slate-200 rounded-md active:bg-slate-300 px-1 py-1 dark:hover:bg-slate-500 dark:active:bg-slate-600 dark:focus:bg-slate-700">
           Lessons
       </button>
       <button class=" focus:outline-none  focus:bg-[#0f4880] focus:text-white mx-4 hover:bg-slate-200 rounded-md active:bg-slate-300 px-1 py-1 dark:hover:bg-slate-500 dark:active:bg-slate-600 dark:focus:bg-slate-700">
