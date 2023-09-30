@@ -1,12 +1,12 @@
-
+import NavBar from "../components/NavBar";
+import UserDashboard from "../components/UserDashboard";
 
 function Dashboard() {
 
   return(
     <div>
-      <h1>
-        Hello from the dashbard!
-      </h1>
+      <NavBar />
+      <UserDashboard />
     </div>
   )
 }
