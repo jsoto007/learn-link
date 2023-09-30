@@ -11,7 +11,13 @@ from config import app, db, api
 from datetime import datetime
 
 # Import Models here
-from models import db, User, Course, Lesson
+from models import db, User, Course, Lesson, ChatHistory
+
+#OpenAI Models here
+import openai
+from dotenv import load_dotenv
+import os
+
 
 # Views go here!
 
@@ -298,6 +304,41 @@ class LessonByID(Resource):
 api.add_resource(LessonByID, '/lesson/<int:id>')
 
 #---------------------------------------------------------------------
+
+
+class Chatbot(Resource):
+    def post(self):
+
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+        print("Loaded API Key:", openai_api_key)
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': 'You are a chatbot.'},
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(Chatbot, '/adda/chat')
+
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )
