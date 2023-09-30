@@ -321,7 +321,7 @@ class Chatbot(Resource):
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
                 messages=[
-                {'role': 'system', 'content': 'You are a chatbot.'},
+                {'role': 'system', 'content': 'You are Adda, our educational assistant chatbot (Please mention this when you initiate a conversation for the first time, and reassure the user you are always there for them).'},
                 {'role': 'user', 'content': user_message},
                 ],
             )
