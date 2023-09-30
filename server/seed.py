@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, User, Course, Lesson
+from models import db, User, Course, Lesson, ChatHistory
 
 if __name__ == '__main__':
     fake = Faker()
@@ -20,6 +20,7 @@ if __name__ == '__main__':
         User.query.delete()
         Course.query.delete()
         Lesson.query.delete()
+        ChatHistory.query.delete()
 
         print( "Creating users..." )
         u1 = User(
@@ -53,7 +54,6 @@ if __name__ == '__main__':
             start_date = None,
             end_date = None,
             user_id = u1.id,
-            lesson_id = 1,
         )
 
         c2 = Course(
@@ -63,7 +63,6 @@ if __name__ == '__main__':
             start_date = None,
             end_date = None,
             user_id = u2.id,
-            lesson_id = 5,
         )
         db.session.add_all( [ c1, c2 ] )
         db.session.commit()

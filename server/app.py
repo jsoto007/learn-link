@@ -307,7 +307,8 @@ api.add_resource(LessonByID, '/lesson/<int:id>')
 
 
 class Chatbot(Resource):
-    def post(self):
+    def post(self, id):
+        user = User.query.filter(User.id == id).first()
 
         load_dotenv()
         openai_api_key=os.getenv("OPENAI_API_KEY")
@@ -321,7 +322,7 @@ class Chatbot(Resource):
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
                 messages=[
-                {'role': 'system', 'content': 'You are Adda, our educational assistant chatbot (Please mention this when you initiate a conversation for the first time) Please ask if you may know their name, and tell them that they can contact you whenever they need assistance.'},
+                {f'role': 'system', 'content': 'You are Adda, our educational assistant chatbot (Please mention this when you initiate a conversation for the first time) Please ask if you may know their name, and tell them that they can contact you whenever they need assistance.'},
                 {'role': 'user', 'content': user_message},
                 ],
             )
@@ -337,7 +338,7 @@ class Chatbot(Resource):
             print('Error:', str(e))
             return {'error': 'An error occurred'}, 500
 
-api.add_resource(Chatbot, '/adda/chat')
+api.add_resource(Chatbot, '/adda/chat/<int:id>')
 
 
 if __name__ == '__main__':
