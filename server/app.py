@@ -309,10 +309,10 @@ api.add_resource(LessonByID, '/lesson/<int:id>')
 class Chatbot(Resource):
     def post(self, id):
         user = User.query.filter(User.id == id).first()
-
+        print(user)
         load_dotenv()
         openai_api_key=os.getenv("OPENAI_API_KEY")
-        print("Loaded API Key:", openai_api_key)
+        
 
         data = request.get_json()
         user_message = data.get('message')
@@ -322,7 +322,7 @@ class Chatbot(Resource):
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
                 messages=[
-                {f'role': 'system', 'content': 'You are Adda, our educational assistant chatbot (Please mention this when you initiate a conversation for the first time) Please ask if you may know their name, and tell them that they can contact you whenever they need assistance.'},
+                {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
                 {'role': 'user', 'content': user_message},
                 ],
             )
