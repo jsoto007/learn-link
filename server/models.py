@@ -141,6 +141,8 @@ class Course( db.Model, SerializerMixin ):
     homework2 = db.Column(db.String)
     homework3 = db.Column(db.String)
 
+    next_course_preview = db.Column(db.String)
+
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
