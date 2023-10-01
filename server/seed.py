@@ -155,46 +155,225 @@ if __name__ == '__main__':
 
         print( 'Creating lessons...' )
         l1 = Lesson(
-            title = "Basic Math 1",
-            content = "1+1=2 2+2=4",
+            title = "What are Numbers?",
+            content = "Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives.",
             duration = "1 week",
             score = False,
             course_id = c1.id,
             user_id = u1.id,
         )
         l2 = Lesson(
-            title = "Basic Math 2",
-            content = "1+1=2 2+2=4",
+            title = "Let's Start Counting!",
+            content = "Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging.",
+            # Counting Practice (1-5): Click on the numbers 1 through 5 to hear and see them. Try counting along with the screen. [Interactive Exercise: Click on Numbers 1-5]
+            # Counting Practice (6-10): Now, let's move on to numbers 6 through 10. Click on each number to hear and see them.
+            # [Interactive Exercise: Click on Numbers 6-10]
             duration = "1 week",
             score = False,
             course_id = c1.id,
             user_id = u1.id,
         )
         l3 = Lesson(
-            title = "Advanced Math 1",
-            content = "3+3=6 7+7=14",
+            title = "Number Recognition",
+            content = "Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form.",
+            #Matching Exercise: Match the written numbers to the corresponding numerical symbols.
             duration = "1 week",
             score = False,
             course_id = c2.id,
             user_id = u2.id,
         )
         l4 = Lesson(
-            title = "Advanced Math 2",
-            content = "3+3=6 7+7=14",
+            title = "Multisensory Learning",
+            content = "For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding.",
             duration = "1 week",
             score = False,
             course_id = c2.id,
             user_id = u2.id,
         )
         l5 = Lesson(
-            title = "Advanced Math 3",
-            content = "3+3=6 7+7=14",
+            title = "Introduction to Numbers Recap",
+            content = "In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together!",
             duration = "1 week",
             score = False,
             course_id = c2.id,
             user_id = u2.id,
         )
-        lessons = [ l1, l2, l3, l4, l5 ]
+        #-----------------Course Two Lessons-------------
+        l6 = Lesson(
+            title = "What is Addition?",
+            content = "Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives.",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l7 = Lesson(
+            title = "Let's Add!",
+            content = "Now, let's dive into some simple addition problems using interactive online tools:",
+            # Addition Practice (1+1): Click on the numbers 1 and 1 to see and hear them. Then, click on the "+" symbol, and finally, click on the "=" symbol to get the answer. [Interactive Exercise: 1 + 1]
+            # Addition Practice (2+2): Next, let's try a slightly more challenging addition problem. Click on the numbers 2 and 2, followed by the "+" and "=" symbols.[Interactive Exercise: 2 + 2]
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l8 = Lesson(
+            title = "Real-World Examples",
+            content = "Adding numbers is something we all do daily. For example, if you have one dollar, and you get another dollar, you'll have two dollars. Or, think about having two books and then getting two more from the library; you'll have four books altogether. Now, imagine situations where you use addition in your life, like adding up the points in a game. Try doing these math problems in your head, or use objects like your favorite snacks or toys to help you understand better.",
+            #Matching Exercise: Match the written numbers to the corresponding numerical symbols.
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l9 = Lesson(
+            title = "Multisensory Learning",
+            content = "For multisensory learners, you can say the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding.",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l10 = Lesson(
+            title = "Basic Addition Recap",
+            content = "In this lesson, we explored the concept of addition, which is the operation of putting numbers together to find a total. We practiced adding with simple examples using interactive tools, and we also related addition to real-life situations, like counting candies or toys. Remember that addition is a fundamental math skill that we use daily, and as we progress through the course, we'll build on this foundation to solve more complex math problems. If you have any questions or need help, feel free to reach out. Keep up the good work in your math journey!",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        #-----------------Course Three Lessons-------------
+        l11 = Lesson(
+            title = "What is Subtraction?",
+            content = "Subtraction is a mathematical operation used when we want to find out how much is left when we take away one number from another. It's like figuring out the difference or what remains. We use the "-" symbol to represent subtraction.",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l12 = Lesson(
+            title = "Let's Subtract!",
+            content = "Now, let's dive into some simple subtraction problems using interactive online tools:",
+            # Subtraction Practice (3-1): Click on the number 3 and then the "-" symbol. Next, click on the number 1, and finally, click on the "=" symbol to find the answer. [Interactive Exercise: 3 - 1]
+            # Subtraction Practice (5-2): Try a slightly more challenging subtraction problem. Click on the number 5, the "-" symbol, the number 2, and then the "=" symbol.[Interactive Exercise: 5 - 2]
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l13 = Lesson(
+            title = "Real-World Examples",
+            content = "Subtraction is something we encounter daily. For example, if you have five sandwiches and you eat two of them, you'll have three sandwiches left. Or, if you have seven cars and you give away three, you'll have four cars remaining.Think of real-life situations where subtraction is used, like counting the cookies you have or figuring out how many days are left until your birthday. Try solving these subtraction problems mentally, and use objects or examples from your own life to help you understand.",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l14 = Lesson(
+            title = "Multisensory Learning",
+            content = "For those who find it helpful, you can say the numbers out loud as you see them on the screen. Combining visual and auditory cues can reinforce your understanding of subtraction.",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l15 = Lesson(
+            title = "Basic Subtraction Recap",
+            content = "In this lesson, we've explored the concept of subtraction, which helps us find out what remains when we take one number away from another. We practiced subtraction using interactive tools and related it to real-life situations like counting things in your daily life. Subtraction is a fundamental skill, and as we progress through the course, we'll build on this knowledge to tackle more complex math problems. If you have any questions or need assistance, feel free to ask. Continue doing an excellent job as you embark on your math adventure!",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        #-----------------Course Four Lessons-------------
+        l16 = Lesson(
+            title = "What is Multiplication?",
+            content = "Multiplication is like a speedy way of adding things together when we have equal groups or quantities. It's a way to find the total quickly by adding the same number over and over again. We use the '×' symbol to represent multiplication.",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l17 = Lesson(
+            title = "Multiplication as Repeated Addition",
+            content = "Think of multiplication as a shortcut for adding the same number multiple times. For example, 2 × 3 means you're adding 2 three times (2 + 2 + 2), which equals 6.",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l18 = Lesson(
+            title = "Let's Multiply!",
+            content = "Now, let's practice some simple multiplication problems using interactive online tools:",
+            #Multiplication Practice (2 × 3): Click on the number 2, followed by the "×" symbol, and then click on the number 3. Finally, click on the "=" symbol to find the answer.  [Interactive Exercise: 2 × 3]
+            #Multiplication Practice (4 × 2): Try another multiplication problem. Click on the number 4, then the "×" symbol, and finally, click on the number 2. [Interactive Exercise: 4 × 2]
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l19 = Lesson(
+            title = "Multiplication in Real-Life",
+            content = "Multiplication is a handy skill for everyday situations. Imagine you have 3 boxes of chocolates, and each box contains 5 chocolates. To find out how many chocolates you have in total, you can use multiplication (3 x 5 = 15). Think of other real-life scenarios where multiplication can be applied, like calculating the total number of apples in several baskets or finding out how much money you'll have if you earn a certain amount each day for a week.",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l20 = Lesson(
+            title = "Basic Multiplication Recap",
+            content = "In summary, multiplication is a valuable skill that helps us find totals quickly when we have equal groups or quantities. We've practiced basic multiplication using interactive tools and explored its relevance in solving real-life problems. As we move forward, remember that multiplication is a powerful mathematical tool with numerous practical applications. If you have any questions or need assistance, don't hesitate to ask. Great job on your math journey!",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        #-----------------Course Five Lessons-------------
+        l21 = Lesson(
+            title = "What is Division?",
+            content = "Division is like a tool we use when we want to share things equally among a group or create equal-sized groups. It helps us find out how many items each person or group should get. We use the '÷' symbol to represent division.",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l22 = Lesson(
+            title = "Division as Sharing",
+            content = "Think of division as a way to share things fairly. For example, if you have 6 candies and want to share them equally among 3 friends, division helps you find out that each friend gets 2 candies (6 ÷ 3 = 2).",
+            duration = "1 week",
+            score = False,
+            course_id = c1.id,
+            user_id = u1.id,
+        )
+        l23 = Lesson(
+            title = "Let's Multiply!",
+            content = "Now, let's practice some simple division problems using interactive online tools:",
+            # Division Practice (8 ÷ 2): Click on the number 8, followed by the "÷" symbol, and then click on the number 2. Finally, click on the "=" symbol to find the answer. [Interactive Exercise: 8 ÷ 2]
+            # Division Practice (15 ÷ 3): Try another division problem. Click on the number 15, then the "÷" symbol, and finally, click on the number 3. [Interactive Exercise: 15 ÷ 3]
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l24 = Lesson(
+            title = "Division in Real-Life",
+            content = "Division is a practical skill for everyday situations. Imagine you have 10 pencils, and you want to divide them equally among 2 friends. You can use division to determine that each friend gets 5 pencils (10 ÷ 2 = 5). Think of other real-life scenarios where division can be applied, like dividing your money among different savings goals.",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+        l25 = Lesson(
+            title = "Basic Division Recap",
+            content = "In summary, division is a practical skill that helps us share things equally or create groups of equal size. We've practiced division using interactive tools and explored its relevance in solving real-life sharing and grouping problems. As we continue, remember that division is a valuable mathematical tool with numerous practical applications in everyday situations. If you have any questions or need assistance, feel free to reach out. Keep up the great work on your math journey!",
+            duration = "1 week",
+            score = False,
+            course_id = c2.id,
+            user_id = u2.id,
+        )
+
+
+        lessons = [ l1, l2, l3, l4, l5, l6 ,l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l16, l18, l19, l20, l21, l22, l23, l24, l25 ]
         db.session.add_all( lessons )
         db.session.commit()
         print( 'Lessons created successfully!' )

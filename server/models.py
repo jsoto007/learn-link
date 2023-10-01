@@ -220,8 +220,6 @@ class Lesson( db.Model, SerializerMixin ):
     title = db.Column( db.String, nullable = False )
     content = db.Column( db.String, nullable = False )
 
-    sub_lesson = db.Column(db.String)
-
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
