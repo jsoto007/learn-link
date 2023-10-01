@@ -131,13 +131,15 @@ class Course( db.Model, SerializerMixin ):
 
     title = db.Column( db.String, nullable = False )
     description = db.Column( db.String )
+    score = db.Column( db.Boolean, default = False )
 
     learning_objective1 = db.Column(db.String)
     learning_objective2 = db.Column(db.String)
     learning_objective3 = db.Column(db.String)
 
-    score = db.Column( db.Boolean, default = False )
-
+    homework1 = db.Column(db.String)
+    homework2 = db.Column(db.String)
+    homework3 = db.Column(db.String)
 
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
@@ -215,6 +217,9 @@ class Lesson( db.Model, SerializerMixin ):
 
     title = db.Column( db.String, nullable = False )
     content = db.Column( db.String, nullable = False )
+
+    sub_lesson = db.Column(db.String)
+
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 

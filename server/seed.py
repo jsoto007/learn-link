@@ -54,19 +54,86 @@ if __name__ == '__main__':
             start_date = None,
             end_date = None,
             user_id = None,
+            learning_objective1 = "Understand the concept of numbers.",
+            learning_objective2 = "Learn to count from 1 to 10 through interactive online exercises",
+            learning_objective3 = "Practice basic number recognition using visual and auditory cues.",
+            homework1 = "",
+            homework2 = "",
+            homework3 = "",
             # user_id = u1.id,
         )
 
         c2 = Course(
-            title = "Advanced Mathematics",
-            description = "Advanced math course",
+            title = "Basic Addition",
+            description = "Welcome to Course 2! Here we're going to explore the world of addition. Addition is a mathematical operation (like a special set of steps or rules that is applied to one or more numbers to find a result) that helps us combine two or more numbers and find the total when we put them together.",
             score = False,
             start_date = None,
             end_date = None,
             user_id = None,
-            # user_id = u1.id,
+            learning_objective1 = "Understand the concept of addition.",
+            learning_objective2 = "Practice simple addition (e.g., 1+1, 2+2) through interactive online tools.",
+            learning_objective3 = "Explore real-world addition examples.",
+            homework = " "
+            # user_id = u2.id,
         )
-        db.session.add_all( [ c1, c2 ] )
+
+        c3 = Course(
+            title = "Basic Subtraction",
+            description = "In the next course, we'll continue exploring basic arithmetic by learning about shapes and patterns. Keep up the great work in your mathematical journey, and don't hesitate to reach out if you have any questions! Welcome to Course 3 of Inclusive Basic Arithmetic! In this course, we'll explore the world of subtraction. Subtraction is a fundamental mathematical operation that helps us find out how much is left when we take things away.",
+            score = False,
+            start_date = None,
+            end_date = None,
+            user_id = None,
+            learning_objective1 = "Understand the concept of subtraction.",
+            learning_objective2 = "Practice subtraction through interactive online tools.",
+            learning_objective3 = "Explore real-world subtraction examples.",
+            homework = " "
+            # user_id = u2.id,
+        )
+
+        c4 = Course(
+            title = "Multiplication",
+            description = "Welcome to Lesson 4! In this lesson, we'll explore the fascinating world of multiplication. Multiplication is a mathematical operation that helps us quickly find the total or product when you repeatedly add the same number to itself or combine equal groups of items or quantities.",
+            score = False,
+            start_date = None,
+            end_date = None,
+            user_id = None,
+            learning_objective1 = "Understand the concept of multiplication as repeated addition.",
+            learning_objective2 = "Practice simple multiplication facts using online interactive tools.",
+            learning_objective3 = "Relate multiplication to real-life scenarios.",
+            homework = " " 
+            # user_id = u2.id,
+        )
+
+        c5 = Course(
+            title = "Division",
+            description = "Welcome to Lesson 5 of Basic Arithmetic! In this lesson, we'll delve into the world of division. Division is a mathematical operation that helps us understand how to share or group items equally among a certain number of people or groups.",
+            score = False,
+            start_date = None,
+            end_date = None,
+            user_id = None,
+            learning_objective1 = "Understand the concept of division as sharing or grouping.",
+            learning_objective2 = "Practice division using online interactive tools.",
+            learning_objective3 = "Explore the concept of fair sharing in real-life scenarios.",
+            homework = " "
+            # user_id = u2.id,
+        )
+
+        c6 = Course(
+            title = "Review and Practice",
+            description = "Welcome to Lesson 6! In this lesson, we'll take a step back to review and practice the concepts we've learned so far. It's a great opportunity to reinforce your understanding and sharpen your math skills.",
+            score = False,
+            start_date = None,
+            end_date = None,
+            user_id = None,
+            learning_objective1 = "Review the concepts of addition, subtraction, multiplication, and division.",
+            learning_objective2 = "Practice with a variety of math exercises and quizzes.",
+            learning_objective3 = "Assess your understanding of the material covered in previous lessons.",
+            homework = " "
+            # user_id = u2.id,
+        )
+
+        db.session.add_all( [ c1, c2, c3, c4, c5, c6 ] )
         db.session.commit()
         print( 'Courses created successfully!' )
 
