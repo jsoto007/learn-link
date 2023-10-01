@@ -340,6 +340,40 @@ class Chatbot(Resource):
 
 api.add_resource(Chatbot, '/adda/chat/<int:id>')
 
+# class Chatbot(Resource):
+#     def post(self, id):
+#         user = User.query.filter(User.id == id).first()
+#         print(user)
+#         load_dotenv()
+#         openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+
+#         data = request.get_json()
+#         user_message = data.get('message')
+#         user_id = data.get('user_id')
+
+#         try:
+#             response = openai.ChatCompletion.create(
+#                 model='gpt-3.5-turbo',
+#                 messages=[
+#                 {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
+#                 {'role': 'user', 'content': user_message},
+#                 ],
+#             )
+
+#             bot_response = response['choices'][0]['message']['content']
+
+#             chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+#             db.session.add(chat_entry)
+#             db.session.commit()
+
+#             return {'botResponse': bot_response}, 200
+#         except Exception as e:
+#             print('Error:', str(e))
+#             return {'error': 'An error occurred'}, 500
+
+# api.add_resource(Chatbot, '/adda/chat/<int:id>')
+
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )

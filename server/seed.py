@@ -179,24 +179,24 @@ if __name__ == '__main__':
             #Matching Exercise: Match the written numbers to the corresponding numerical symbols.
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l4 = Lesson(
             title = "Multisensory Learning",
             content = "For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l5 = Lesson(
             title = "Introduction to Numbers Recap",
             content = "In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together!",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         #-----------------Course Two Lessons-------------
         l6 = Lesson(
@@ -223,29 +223,29 @@ if __name__ == '__main__':
             #Matching Exercise: Match the written numbers to the corresponding numerical symbols.
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l9 = Lesson(
             title = "Multisensory Learning",
             content = "For multisensory learners, you can say the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l10 = Lesson(
             title = "Basic Addition Recap",
             content = "In this lesson, we explored the concept of addition, which is the operation of putting numbers together to find a total. We practiced adding with simple examples using interactive tools, and we also related addition to real-life situations, like counting candies or toys. Remember that addition is a fundamental math skill that we use daily, and as we progress through the course, we'll build on this foundation to solve more complex math problems. If you have any questions or need help, feel free to reach out. Keep up the good work in your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         #-----------------Course Three Lessons-------------
         l11 = Lesson(
             title = "What is Subtraction?",
-            content = "Subtraction is a mathematical operation used when we want to find out how much is left when we take away one number from another. It's like figuring out the difference or what remains. We use the "-" symbol to represent subtraction.",
+            content = "Subtraction is a mathematical operation used when we want to find out how much is left when we take away one number from another. It's like figuring out the difference or what remains. We use the '-' symbol to represent subtraction.",
             duration = "1 week",
             score = False,
             course_id = c1.id,
@@ -266,24 +266,24 @@ if __name__ == '__main__':
             content = "Subtraction is something we encounter daily. For example, if you have five sandwiches and you eat two of them, you'll have three sandwiches left. Or, if you have seven cars and you give away three, you'll have four cars remaining.Think of real-life situations where subtraction is used, like counting the cookies you have or figuring out how many days are left until your birthday. Try solving these subtraction problems mentally, and use objects or examples from your own life to help you understand.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l14 = Lesson(
             title = "Multisensory Learning",
             content = "For those who find it helpful, you can say the numbers out loud as you see them on the screen. Combining visual and auditory cues can reinforce your understanding of subtraction.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l15 = Lesson(
             title = "Basic Subtraction Recap",
             content = "In this lesson, we've explored the concept of subtraction, which helps us find out what remains when we take one number away from another. We practiced subtraction using interactive tools and related it to real-life situations like counting things in your daily life. Subtraction is a fundamental skill, and as we progress through the course, we'll build on this knowledge to tackle more complex math problems. If you have any questions or need assistance, feel free to ask. Continue doing an excellent job as you embark on your math adventure!",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         #-----------------Course Four Lessons-------------
         l16 = Lesson(
@@ -309,24 +309,24 @@ if __name__ == '__main__':
             #Multiplication Practice (4 × 2): Try another multiplication problem. Click on the number 4, then the "×" symbol, and finally, click on the number 2. [Interactive Exercise: 4 × 2]
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l19 = Lesson(
             title = "Multiplication in Real-Life",
             content = "Multiplication is a handy skill for everyday situations. Imagine you have 3 boxes of chocolates, and each box contains 5 chocolates. To find out how many chocolates you have in total, you can use multiplication (3 x 5 = 15). Think of other real-life scenarios where multiplication can be applied, like calculating the total number of apples in several baskets or finding out how much money you'll have if you earn a certain amount each day for a week.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l20 = Lesson(
             title = "Basic Multiplication Recap",
             content = "In summary, multiplication is a valuable skill that helps us find totals quickly when we have equal groups or quantities. We've practiced basic multiplication using interactive tools and explored its relevance in solving real-life problems. As we move forward, remember that multiplication is a powerful mathematical tool with numerous practical applications. If you have any questions or need assistance, don't hesitate to ask. Great job on your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         #-----------------Course Five Lessons-------------
         l21 = Lesson(
@@ -352,24 +352,24 @@ if __name__ == '__main__':
             # Division Practice (15 ÷ 3): Try another division problem. Click on the number 15, then the "÷" symbol, and finally, click on the number 3. [Interactive Exercise: 15 ÷ 3]
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l24 = Lesson(
             title = "Division in Real-Life",
             content = "Division is a practical skill for everyday situations. Imagine you have 10 pencils, and you want to divide them equally among 2 friends. You can use division to determine that each friend gets 5 pencils (10 ÷ 2 = 5). Think of other real-life scenarios where division can be applied, like dividing your money among different savings goals.",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
         l25 = Lesson(
             title = "Basic Division Recap",
             content = "In summary, division is a practical skill that helps us share things equally or create groups of equal size. We've practiced division using interactive tools and explored its relevance in solving real-life sharing and grouping problems. As we continue, remember that division is a valuable mathematical tool with numerous practical applications in everyday situations. If you have any questions or need assistance, feel free to reach out. Keep up the great work on your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c2.id,
-            user_id = u2.id,
+            course_id = c1.id,
+            user_id = u1.id,
         )
 
 
