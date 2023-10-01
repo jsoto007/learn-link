@@ -125,12 +125,20 @@ class Course( db.Model, SerializerMixin ):
     __tablename__ = 'courses'
 
     id = db.Column( db.Integer, primary_key = True )
+
     created_at = db.Column( db.DateTime, server_default=db.func.now() )
     updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
 
     title = db.Column( db.String, nullable = False )
     description = db.Column( db.String )
+
+    learning_objective1 = db.Column(db.String)
+    learning_objective2 = db.Column(db.String)
+    learning_objective3 = db.Column(db.String)
+
     score = db.Column( db.Boolean, default = False )
+
+
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 

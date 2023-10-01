@@ -48,21 +48,29 @@ if __name__ == '__main__':
 
         print( 'Creating Courses...' )
         c1 = Course(
-            title = "Basic Mathematics",
-            description = "Basic math course",
+            title = "Introduction to Numbers",
+            description = "Welcome to the first lesson of Basic Arithmetic! In this lesson, we'll explore the fundamental concept of numbers. This lesson is designed to make numbers more accessible and understandable.",
             score = False,
             start_date = None,
             end_date = None,
-            user_id = u1.id,
+            user_id = None,
+            learning_objective1 = "Understand the concept of numbers.",
+            learning_objective2 = "Learn to count from 1 to 10 through interactive online exercises",
+            learning_objective3 = "Practice basic number recognition using visual and auditory cues.",
+            # user_id = u1.id,
         )
 
         c2 = Course(
-            title = "Advanced Mathematics",
-            description = "Advanced math course",
+            title = "Basic Addition",
+            description = "Welcome to Course 2! Here we're going to explore the world of addition. Addition is a mathematical operation (like a special set of steps or rules that is applied to one or more numbers to find a result) that helps us combine two or more numbers and find the total when we put them together.",
             score = False,
             start_date = None,
             end_date = None,
-            user_id = u2.id,
+            user_id = None,
+            learning_objective1 = "Understand the concept of addition.",
+            learning_objective2 = "Practice simple addition (e.g., 1+1, 2+2) through interactive online tools.",
+            learning_objective3 = "Explore real-world addition examples.",
+            # user_id = u2.id,
         )
         db.session.add_all( [ c1, c2 ] )
         db.session.commit()
