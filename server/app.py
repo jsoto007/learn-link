@@ -3,21 +3,124 @@
 # Standard library imports
 
 # Remote library imports
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, jsonify, request, session
 from flask_restful import Resource
 
 # Local imports
-from config import app, db, api
+from config import app, db, api, bcrypt
 from datetime import datetime
 
 # Import Models here
-from models import db, User, Course, Lesson
+from models import User, Course, Lesson
 
 # Views go here!
 
 # @app.route('/')
 # def home():
-#     return ''
+#     return <h1>Welcome to Learn-Link</h1>
+
+#---------------------------------------------------------------------
+
+class ClearSession( Resource ):
+    
+    def delete( self ):
+
+        session[ 'page_views' ] = None
+        session[ 'user_id' ] = None
+
+        return {}, 204
+
+api.add_resource( ClearSession, '/clear', endpoint = 'clear' )
+
+#---------------------------------------------------------------------
+
+class Signup( Resource ):
+
+    def post( self ):
+
+        try:
+            username = request.get_json()[ 'username' ]
+            email = request.get_json()[ 'email' ]
+            password = request.get_json()[ 'password' ]
+            first_name = request.get_json()[ 'first_name' ]
+            last_name = request.get_json()[ 'last_name' ]
+            bio = request.get_json()[ 'bio' ]
+        
+        except KeyError:
+            return { "error": "Missing required field in form." }, 400
+        
+        if username and password:
+            new_user = User(
+                username = username,
+                email = email,
+                first_name = first_name,
+                last_name = last_name,
+                bio = bio,
+            )
+
+            password_hash = bcrypt.generate_password_hash(
+                password.encode( 'utf-8' )
+            )
+            self._password_hash = password_hash.decode( 'utf-8' )
+            new_user.password_hash = password
+
+            db.session.add( new_user )
+            db.session.commit()
+
+            session[ 'user_id' ] = new_user.id
+
+            return new_user.to_dict(), 201
+        else:
+            return { "error": "All fields are required." }, 422
+        
+api.add_resource( Signup, '/signup', endpoint = 'signup' )
+            
+
+#---------------------------------------------------------------------
+
+class CheckSession( Resource ):
+
+    def get( self ):
+        if session.get( 'user_id' ):
+            user = User.query.filter( User.id == session[ 'user_id' ]).first()
+            return user.to_dict(), 200
+        else:
+            return {}, 204
+        
+api.add_resource( CheckSession, '/check', endpoint = 'check' )
+
+#---------------------------------------------------------------------
+
+class Login( Resource ):
+    
+    def post( self ):
+        try:
+            username = request.get_json()[ 'username' ]
+            password = request.get_json()[ 'password' ]
+        except TypeError:
+            return { "error": "Missing 'username' or 'password'." }, 400
+        
+        user = User.query.filter( User.username == username ).first()
+
+        if user.authenticate( password ):
+            session[ 'user_id' ] = user.id
+            return user.to_dict(), 200
+        else:
+            return { "error": "Unauthorized Access. Members Only Content, please sign in." }, 401
+        
+api.add_resource( Login, '/login', endpoint = 'login' )
+
+#---------------------------------------------------------------------
+
+class Logout( Resource ):
+
+    def delete( self ):
+        
+        session[ 'user_id' ] = None
+
+        return {}, 204
+    
+api.add_resource( Logout, '/logout', endpoint = 'logout' )
 
 #---------------------------------------------------------------------
 
