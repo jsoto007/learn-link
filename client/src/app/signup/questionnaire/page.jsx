@@ -38,7 +38,14 @@ const questions = [
 
 export default function Questionnaire() {
   const [activeQuestionNum, setActiveQuestionNum] = useState(0)
-  // const [activeQuestion, setActiveQuestion] = useState(null)
+  const [isChecked, setIsChecked] = useState(false)
+  const [selectedAnswers, setSelectedAnswers] = useState({
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: []
+  })
   // const [activeAnswer1, setActiveAnswer1] = useState(null)
   // const [activeAnswer2, setActiveAnswer2] = useState(null)
   // const [activeAnswer3, setActiveAnswer3] = useState(null)
@@ -46,6 +53,29 @@ export default function Questionnaire() {
 
   const {question, answers, outro} = questions[activeQuestionNum]
 
+  const nextQuestion = () => {
+    if (activeQuestionNum !== questions.length - 1){
+      setActiveQuestionNum(activeQuestionNum + 1)
+    }
+  }
+
+  const handleCheckChange = (e) => {
+    if(e.target.checked){
+      setSelectedAnswers({...selectedAnswers, [activeQuestionNum]: [...selectedAnswers[activeQuestionNum],e.target.value]})
+    } else{
+      let removeVal = selectedAnswers[activeQuestionNum].find((currentVal) => currentVal === e.target.value)
+      let removeValIndex = selectedAnswers[activeQuestionNum].indexOf(removeVal)
+      if(removeValIndex >= -1){
+        selectedAnswers[activeQuestionNum].splice(removeValIndex, 1)}
+      console.log(selectedAnswers)
+    }
+  }
+
+  const handleSubmit = () => {
+    console.log('submitted!')
+  }
+
+  console.log(selectedAnswers)
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
@@ -54,77 +84,36 @@ export default function Questionnaire() {
       <fieldset>
       <label className="text-base font-semibold text-gray-900">Question: <span>{activeQuestionNum + 1}/{questions.length}</span></label>
       <legend className="sr-only">Questions</legend>
+      <h3>{question}</h3>
       <div className="space-y-5">
-        <div className="relative flex items-start">
-          <div className="flex h-6 items-center">
-            <input
-              id="answer-1"
-              aria-describedby="answer1-description"
-              name="answer-1"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
+        {answers.map((answer, id) => {
+          return (
+          <div key={id + 1} className="relative flex items-start">
+            <div className="flex h-6 items-center">
+              <input
+                id={`answer-${id + 1}`}
+                aria-describedby={`answer${id + 1}-description`}
+                name={`answer-${id + 1}`}
+                type="checkbox"
+                value={answer}
+                onChange={handleCheckChange}
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+            </div>
+            <div className="ml-3 text-sm leading-6">
+              <label htmlFor={`answer-${id + 1}`} className="font-medium text-gray-900">
+                {answer}
+              </label>
+            </div>
           </div>
-          <div className="ml-3 text-sm leading-6">
-            <label htmlFor="answer-1" className="font-medium text-gray-900">
-              REPLACE
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-6 items-center">
-            <input
-              id="answer-2"
-              aria-describedby="answer-2-description"
-              name="answer-2"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
-          </div>
-          <div className="ml-3 text-sm leading-6">
-            <label htmlFor="answer-2" className="font-medium text-gray-900">
-              REPLACE
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-6 items-center">
-            <input
-              id="answer-3"
-              aria-describedby="answer-3-description"
-              name="answer-3"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
-          </div>
-          <div className="ml-3 text-sm leading-6">
-            <label htmlFor="answer-3" className="font-medium text-gray-900">
-              REPLACE
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-6 items-center">
-            <input
-              id="answer-4"
-              aria-describedby="answer-4-description"
-              name="answer-4"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
-          </div>
-          <div className="ml-3 text-sm leading-6">
-            <label htmlFor="answer-4" className="font-medium text-gray-900">
-              REPLACE
-            </label>
-          </div>
-        </div>
+          )})}
+        <div>{outro}</div>
       </div>
     </fieldset>
-      <div>
-    </div>
         <div className='flex justify-end bg-red-200 w-[45%] absolute bottom-40 '>
-          <a href='#'>Next</a>
+          {activeQuestionNum === questions.length - 1 ? 
+            (<button onClick={handleSubmit}>Submit</button>) 
+            : (<button onClick={nextQuestion}>Next</button>)}
         </div>
       </div>
     </div>
