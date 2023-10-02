@@ -78,6 +78,19 @@ api.add_resource( Signup, '/signup', endpoint = 'signup' )
 
 #---------------------------------------------------------------------
 
+class CheckSession( Resource ):
+
+    def get( self ):
+        if session.get( 'user_id' ):
+            user = User.query.filter( User.id == session[ 'user_id' ]).first()
+            return user.to_dict(), 200
+        else:
+            return {}, 204
+        
+api.add_resource( CheckSession, '/check', endpoint = 'check' )
+
+#---------------------------------------------------------------------
+
 
 class Users(Resource):
     
