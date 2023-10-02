@@ -74,7 +74,7 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            response = make_response(user.to_dict(rules =('-lessons.courses.users', '-_password_hash')),200)
+            response = make_response(user.to_dict(rules =('-lessons.courses.users','-lessons.updated_at','-lessons.created_at', '-_password_hash', '-lessons.courses.created_at','-lessons.courses.description','-lessons.courses.end_date','-lessons.courses.learning_objective1','-lessons.courses.learning_objective2','-lessons.courses.learning_objective3','-lessons.courses.homework1','-lessons.courses.homework2','-lessons.courses.homework3','-lessons.courses.next_course_preview','-lessons.courses.score','-lessons.courses.start_date','-lessons.courses.updated_at','-lessons.courses.user_id', )),200)
         else:
             response = make_response({
             "error": "User not found"
