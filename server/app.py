@@ -34,6 +34,49 @@ api.add_resource( ClearSession, '/clear', endpoint = 'clear' )
 
 #---------------------------------------------------------------------
 
+class Signup( Resource ):
+
+    def post( self ):
+
+        try:
+            username = request.get_json()[ 'username' ]
+            email = request.get_json()[ 'email' ]
+            password = request.get_json()[ 'password' ]
+            first_name = request.get_json()[ 'first_name' ]
+            last_name = request.get_json()[ 'last_name' ]
+        
+        except KeyError:
+            return { "error": "Missing required field in form." }, 400
+        
+        if username and password:
+            new_user = User(
+                username = username,
+                email = email,
+                first_name = first_name,
+                last_name = last_name,
+            )
+
+            password_hash = bcrypt.generate_password_hash(
+                password.encode( 'utf-8' )
+            )
+            self._password_hash = password_hash.decode( 'utf-8' )
+            new_user.password_hash = password
+
+            db.session.add( new_user )
+            db.session.commit()
+
+            session[ 'user_id' ] = new_user.id
+
+            return new_user.to_dict(), 201
+        else:
+            return { "error": "All fields are required." }, 422
+        
+api.add_resource( Signup, '/signup', endpoint = 'signup' )
+            
+
+#---------------------------------------------------------------------
+
+
 class Users(Resource):
     
     def get(self):
