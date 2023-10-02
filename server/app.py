@@ -318,6 +318,8 @@ class Chatbot(Resource):
         user_message = data.get('message')
         user_id = data.get('user_id')
 
+        #timer / hit them with a Hi! How can I help you?
+        # Also if user.chat_histories.length < 0 
         try:
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
