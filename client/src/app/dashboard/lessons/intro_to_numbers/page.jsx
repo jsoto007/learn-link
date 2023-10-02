@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function page() {
@@ -9,20 +10,22 @@ export default function page() {
   }
 
     const layout = 
-    <div className="font-sans text-blue-800 m-5">
-      <h1 className='text-center text-4xl font-semibold m-7 mt-20 mb-10 underline'>{course.title}</h1>
+    <div className="font-sans text-blue-800 mb-12">
+      <h1 className='text-center text-4xl font-semibold mb-10 underline'>{course.title}</h1>
       <ul className='mb-20'>
       {course.objectives.map((objective, index) => {
         return <li className="text-xl font-medium mb-8" key={index}>{index + 1}. {objective}</li>
       })}
       </ul>
-      <div className='flex justify-center'>
-        <button className='mt-4 w-1/2 rounded-full bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Start Learning</button>
-      </div>
+      <Link href='/dashboard/lessons/intro_to_numbers/1'>
+        <div className='flex justify-center'>
+          <button className='mt-4 w-1/2 rounded-full bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Start Learning</button>
+        </div>
+      </Link>
     </div>
 
   return (
-    <main className='flex align-center justify-center bg-white h-screen'>
+    <main className='flex items-center justify-center bg-white h-screen'>
       {layout}
     </main>
   )
