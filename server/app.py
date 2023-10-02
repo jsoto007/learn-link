@@ -7,7 +7,7 @@ from flask import Flask, make_response, jsonify, request, session
 from flask_restful import Resource
 
 # Local imports
-from config import app, db, api
+from config import app, db, api, bcrypt
 from datetime import datetime
 
 # Import Models here
@@ -44,6 +44,7 @@ class Signup( Resource ):
             password = request.get_json()[ 'password' ]
             first_name = request.get_json()[ 'first_name' ]
             last_name = request.get_json()[ 'last_name' ]
+            bio = request.get_json()[ 'bio' ]
         
         except KeyError:
             return { "error": "Missing required field in form." }, 400
@@ -54,6 +55,7 @@ class Signup( Resource ):
                 email = email,
                 first_name = first_name,
                 last_name = last_name,
+                bio = bio,
             )
 
             password_hash = bcrypt.generate_password_hash(
