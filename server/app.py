@@ -91,6 +91,26 @@ api.add_resource( CheckSession, '/check', endpoint = 'check' )
 
 #---------------------------------------------------------------------
 
+class Login( Resource ):
+    
+    def post( self ):
+        try:
+            username = request.get_json()[ 'username' ]
+            password = request.get_json()[ 'password' ]
+        except TypeError:
+            return { "error": "Missing 'username' or 'password'." }, 400
+        
+        user = User.query.filter( User.username == username ).first()
+
+        if user.authenticate( password ):
+            session[ 'user_id' ] = user.id
+            return user.to_dict(), 200
+        else:
+            return { "error": "Unauthorized Access. Members Only Content, please sign in." }, 401
+        
+api.add_resource( Login, '/login', endpoint = 'login' )
+
+#---------------------------------------------------------------------
 
 class Users(Resource):
     
