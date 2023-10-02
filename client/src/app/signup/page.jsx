@@ -1,7 +1,10 @@
+"use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
 // import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 
 export default function Signup() {
+  const router = useRouter()
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -95,6 +98,7 @@ export default function Signup() {
                 <button
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  onClick={() => router.push('/signup/questionnaire')}
                 >
                   Sign in
                 </button>
