@@ -112,6 +112,18 @@ api.add_resource( Login, '/login', endpoint = 'login' )
 
 #---------------------------------------------------------------------
 
+class Logout( Resource ):
+
+    def delete( self ):
+        
+        session[ 'user_id' ] = None
+
+        return {}, 204
+    
+api.add_resource( Logout, '/logout', endpoint = 'logout' )
+
+#---------------------------------------------------------------------
+
 class Users(Resource):
     
     def get(self):
