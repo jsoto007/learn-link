@@ -5,11 +5,10 @@ import React from 'react'
 
 export default function page() {
 
-  
-
     const course = {
         title : "Let's Start Counting!",
-        content : "Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging."
+        content : "Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging.",
+        task: "Click on the numbers 1 through 10 to hear and see them. Try counting along with the screen."
       }
 
     const speak = (word) => {
@@ -38,7 +37,7 @@ export default function page() {
             <button onClick={() => speak("10")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>10</button>
           </div>
           <div className='flex justify-center mb-5'>
-            <p>(Click on the numbers 1 through 10 to hear and see them. Try counting along with the screen.)</p>
+            <p className='text-center'>({course.task})</p>
           </div>
           <div className='flex justify-around'>
           <Link href='/dashboard/lessons/intro_to_numbers/1'>
