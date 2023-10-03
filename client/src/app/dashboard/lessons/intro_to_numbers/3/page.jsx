@@ -14,7 +14,13 @@ export default function page() {
     const [response4, setResponse4] = useState(null)
     const [response5, setResponse5] = useState(null)
 
-    const handleCheck = (e) => {
+    const course = {
+        title : "Number Recognition",
+        content : "Recognizing numbers is essential. They come in both a numerical form (7) and a written form (seven). Let's practice recognizing numbers by matching them to their written form.",
+        task : "Match the written numbers to the corresponding numerical symbols."
+      }
+
+      const handleCheck = (e) => {
         if (e.target.id === "answer1") {
             setAnswer1(e.target.value)
         }
@@ -40,12 +46,6 @@ export default function page() {
         return response
     }
 
-    const course = {
-        title : "Number Recognition",
-        content : "Recognizing numbers is essential. They come in both a numerical form (7) and a written form (seven). Let's practice recognizing numbers by matching them to their written form.",
-        task : "Match the written numbers to the corresponding numerical symbols."
-      }
-
     const layout = 
     <div className="font-sans text-blue-800 mb-12">
       <h1 className='text-center text-4xl font-semibold mb-10 underline'>{course.title}</h1>
@@ -64,7 +64,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer1" 
                 value="correct" 
-                name="answer 1"
+                name="question 1 answer 1"
                 type='radio'
                 onClick={ (e) => {
                     handleCheck(e)
@@ -79,7 +79,7 @@ export default function page() {
                   id="answer1" 
                   value="incorrect" 
                   type='radio'
-                  name="answer 1" 
+                  name="question 1 answer 2" 
                   onClick={ (e) => {
                     handleCheck(e)
                     setResponse1(getResponse(incorrectArray))
@@ -93,7 +93,7 @@ export default function page() {
                   id="answer1" 
                   value="incorrect" 
                   type='radio'
-                  name="answer 1" 
+                  name="question 1 answer 3" 
                   onClick={ (e) => {
                     handleCheck(e)
                     setResponse1(getResponse(incorrectArray))
@@ -107,7 +107,7 @@ export default function page() {
                   id="answer1" 
                   value="incorrect" 
                   type='radio'
-                  name="answer 1" 
+                  name="question 1 answer 4" 
                   onClick={ (e) => {
                     handleCheck(e)
                     setResponse1(getResponse(incorrectArray))
@@ -126,7 +126,7 @@ export default function page() {
               className="ml-2" 
               id="answer2" 
               value="incorrect" 
-              name="answer 2"
+              name="question 2 answer 1"
               type='radio'  
               onClick={(e) => {
                 handleCheck(e)
@@ -140,7 +140,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer2" 
                 value="incorrect" 
-                name="answer 2" 
+                name="question 2 answer 2" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -154,7 +154,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer2" 
                 value="correct" 
-                name="answer 2" 
+                name="question 2 answer 3" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -168,7 +168,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer2" 
                 value="incorrect" 
-                name="answer 2" 
+                name="question 2 answer 4" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -188,7 +188,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer3" 
                 value="incorrect" 
-                name="answer 3" 
+                name="question 3 answer 1" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -202,7 +202,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer3" 
                 value="incorrect" 
-                name="answer 3" 
+                name="question 3 answer 2" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -216,7 +216,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer3" 
                 value="correct" 
-                name="answer 3" 
+                name="question 3 answer 3" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -230,7 +230,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer3" 
                 value="incorrect" 
-                name="answer 3" 
+                name="question 3 answer 4" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -250,7 +250,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer4" 
                 value="incorrect" 
-                name="answer 4" 
+                name="question 4 answer 1" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -264,7 +264,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer4" 
                 value="correct" 
-                name="answer 4" 
+                name="question 4 answer 2" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -278,7 +278,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer4" 
                 value="incorrect" 
-                name="answer 4" 
+                name="question 4 answer 3" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -292,7 +292,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer4" 
                 value="incorrect" 
-                name="answer 4" 
+                name="question 4 answer 4" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -312,7 +312,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer5" 
                 value="incorrect" 
-                name="answer 5" 
+                name="question 5 answer 1" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -326,7 +326,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer5" 
                 value="incorrect" 
-                name="answer 5" 
+                name="question 5 answer 2" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -340,7 +340,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer5" 
                 value="incorrect" 
-                name="answer 5" 
+                name="question 5 answer 3" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)
@@ -354,7 +354,7 @@ export default function page() {
                 className="ml-2" 
                 id="answer5" 
                 value="correct" 
-                name="answer 5" 
+                name="question 5 answer 4" 
                 type='radio'
                 onClick={(e) => {
                     handleCheck(e)

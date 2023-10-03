@@ -1,10 +1,12 @@
 'use client'
 import Link from 'next/link'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export default function page() {
     const [randomNumber, setRandomNumber] = useState("Ready...")
     const [startNumbers, setStartNumbers] = useState(false)
+
+
     const course = {
         title : "Multisensory Learning",
         content : "For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding."
@@ -15,9 +17,12 @@ export default function page() {
         setRandomNumber(randomNumber1to10)
     }
 
-    setTimeout(() => {
+    const startTimer = () => {
+      setInterval(() => {
         getRandomNumber1to10();
-      }, "4000");
+      }, "3000");
+    }
+
     
     
         const layout = 
@@ -28,7 +33,12 @@ export default function page() {
           </div>
           <div className='flex justify-center mb-20'>
             {startNumbers === true? <p className='bg-blue-800 mb-10 px-5 py-5 text-4xl font-semibold leading-6 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>{randomNumber}</p> :
-            <button className='mt-4 rounded-none mb-10 bg-blue-800 border-2 border-blue-800 px-1.5 py-5 text-3xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 hover:border-blue-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' onClick={() => setStartNumbers(!startNumbers)}>Click to Begin</button>}
+            <button 
+              className='mt-4 rounded-none mb-10 bg-blue-800 border-2 border-blue-800 px-1.5 py-5 text-3xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 hover:border-blue-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' 
+              onClick={() => {
+                setStartNumbers(!startNumbers)
+                startTimer()
+                }}>Click to Begin</button>}
           </div>
           <div className='flex justify-around'>
           <Link href='/dashboard/lessons/intro_to_numbers/3'>
