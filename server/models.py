@@ -23,6 +23,38 @@ class User( db.Model, SerializerMixin ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
+    #Disability
+    visual_impairment = db.Column( db.String )
+    hearing_impairment = db.Column( db.String )
+    motor_impairment = db.Column( db.String )
+    cognitive_impairment = db.Column( db.String )
+    Other = db.Column( db.String )
+
+    #Adaptability with learning experience
+    adaptability_options = db.Column( db. String)
+    # Adjusting text size
+    # Using screen readers
+    # Customizing color schemes
+    # Keyboard shortcuts
+    # Other (Please specify)
+    
+    #Crucial aspects
+    crucial_aspects = db.Column( db.String )
+    #Clear and simple language
+    #Text-to-speech features
+    #Interactive transcripts
+    #Readable fonts and layouts
+    #Other (Please specify)
+
+    ideal_feature = db.Column( db.String )
+    #Collaborative learning spaces
+    #Personalized learning plans
+    #Simplified navigation
+    #Enhanced text-to-speech
+    #Other (Please specify)
+
+
+
     #Relationships
     # courses = db.relationship( 'Course', backref = 'user' )
     # lessons = association_proxy( 'courses', 'course' )
