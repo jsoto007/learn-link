@@ -23,8 +23,6 @@ class User( db.Model, SerializerMixin ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
-    
-
     #Relationships
     # courses = db.relationship( 'Course', backref = 'user' )
     # lessons = association_proxy( 'courses', 'course' )
@@ -41,7 +39,6 @@ class User( db.Model, SerializerMixin ):
         '-courses.user_id',
         '-courses.lessons',
         '-chat_history.user',
-        
         )
 
 
