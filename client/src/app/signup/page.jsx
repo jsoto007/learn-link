@@ -95,7 +95,7 @@ export default function Signup() {
                   <p className='mb-6 text-center font-light'>Already have an account? <a href='/login' className='text-decoration: underline text-blue-500'>Log in</a></p>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-full bg-[#0f4880] px-6 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-full bg-[#0f4880] px-6 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#031C43] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     onClick={() => router.push('/signup/questionnaire/welcome')}
                   >
                     Sign up
