@@ -48,7 +48,7 @@ const Questionnaire = () => {
     4: []
   })
 
-  const router = useRouter()
+  // const router = useRouter()
 
   const {question, answers, outro} = questions[currentQuestionIndex]
 
@@ -83,10 +83,6 @@ const Questionnaire = () => {
 
   //  const handleSubmit = (e) => {
   //   e.preventDefault()
-  //   const newAccessibility = {
-  //     selectedAnswers[currentQuestionIndex]: '',
-  //     selectedAnswers[1]: ''
-  //   }
   //   fetch('/api/signup/questionnaire', {
   //     method: 'POST',
   //     headers: {'Content-Type': 'application/json'},
@@ -94,7 +90,7 @@ const Questionnaire = () => {
   // })
   // .then((r) => r.json())
   // .then(data => console.log(data))
-  // .then(() => router.push('/'))
+  // .then(() => router.push('/signup/questionnaire/thankyou'))
   // }
 
   const renderCurrentQuestion = () => {
