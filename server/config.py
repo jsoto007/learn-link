@@ -10,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 
 # Local imports
+import secrets
 
 # Instantiate app, set attributes
 app = Flask( __name__ )
@@ -19,6 +20,9 @@ app.json.compact = False
 
 # Define Bcrypt for password hash
 bcrypt = Bcrypt()
+
+# Generate & Instantiate secret key
+app.secret_key = secrets.token_hex( 32 )
 
 # Define metadata, instantiate db
 metadata = MetaData( naming_convention={
