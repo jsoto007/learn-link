@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const questions = [
   {
@@ -48,7 +48,7 @@ const Questionnaire = () => {
     4: []
   })
 
-  // const router = useRouter()
+  const router = useRouter()
 
   const {question, answers, outro} = questions[currentQuestionIndex]
 
@@ -81,8 +81,8 @@ const Questionnaire = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
-  //  const handleSubmit = (e) => {
-  //   e.preventDefault()
+   const handleSubmit = (e) => {
+    e.preventDefault()
   //   fetch('/api/signup/questionnaire', {
   //     method: 'POST',
   //     headers: {'Content-Type': 'application/json'},
@@ -90,8 +90,9 @@ const Questionnaire = () => {
   // })
   // .then((r) => r.json())
   // .then(data => console.log(data))
-  // .then(() => router.push('/signup/questionnaire/thankyou'))
-  // }
+  // .then(() => 
+    router.push('/signup/questionnaire/thankyou')
+  }
 
   const renderCurrentQuestion = () => {
     return (
@@ -102,6 +103,7 @@ const Questionnaire = () => {
           <fieldset>
             <label className="text-base font-semibold text-gray-900">Question: <span>{currentQuestionIndex + 1}/{questions.length}</span></label>
             <legend className="sr-only">Questions</legend>
+            <img src='/Adda-head.png'/>
             <h3>{question}</h3>
             <div className="space-y-5">
               {answers.map((answer, id) => {
@@ -129,10 +131,10 @@ const Questionnaire = () => {
               <div>{outro}</div>
             </div>
           </fieldset>
-          <div className='flex justify-end bg-red-200 w-[45%] absolute bottom-40 '>
+          <div className='flex justify-end w-[45%] absolute bottom-40 '>
           {currentQuestionIndex === questions.length - 1 ? 
             (<button onClick={(e) => handleSubmit(e)}>Submit</button>) 
-            : (<button onClick={handleNextQuestion}>Next</button>)}
+            : (<button onClick={handleNextQuestion}>Next one!</button>)}
           </div>
         </div>
       </div>

@@ -5,7 +5,8 @@ export default function Welcome() {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Hi, I'm Adda
         </h2>
-        <p>I’m thrilled to have you on board, and your unique journey is my top priority. To ensure I provide you with the best learning experience tailored to your needs, I have a few questions for you. Don't worry; it's quick and easy!</p>
+        <img src="/Adda.png"/>
+        <p>I’m thrilled to have you on board, and your unique journey is my top priority. To ensure I provide you with the best learning experience tailored to your needs, I have a few questions for you. <strong>Don't worry; it's quick and easy!</strong><img src="/rocket.png"/></p>
         <div className="mt-10 flex items-center gap-x-6">
           <a
             href="/signup/questionnaire"
