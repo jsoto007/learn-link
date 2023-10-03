@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import { useRouter } from 'next/router';
 
 const questions = [
   {
@@ -35,6 +36,7 @@ const questions = [
   }
 ]
 
+
 const Questionnaire = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentAnswers, setCurrentAnswers] = useState([]);
@@ -45,6 +47,8 @@ const Questionnaire = () => {
     3: [],
     4: []
   })
+
+  const router = useRouter()
 
   const {question, answers, outro} = questions[currentQuestionIndex]
 
@@ -77,9 +81,21 @@ const Questionnaire = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
- //   const handleSubmit = () => {
-//     console.log('submitted!')
-//   }
+  //  const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const newAccessibility = {
+  //     selectedAnswers[currentQuestionIndex]: '',
+  //     selectedAnswers[1]: ''
+  //   }
+  //   fetch('/api/signup/questionnaire', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify(selectedAnswers)
+  // })
+  // .then((r) => r.json())
+  // .then(data => console.log(data))
+  // .then(() => router.push('/'))
+  // }
 
   const renderCurrentQuestion = () => {
     return (
@@ -119,7 +135,7 @@ const Questionnaire = () => {
           </fieldset>
           <div className='flex justify-end bg-red-200 w-[45%] absolute bottom-40 '>
           {currentQuestionIndex === questions.length - 1 ? 
-            (<button onClick={handleSubmit}>Submit</button>) 
+            (<button onClick={(e) => handleSubmit(e)}>Submit</button>) 
             : (<button onClick={handleNextQuestion}>Next</button>)}
           </div>
         </div>
