@@ -204,7 +204,7 @@ if __name__ == '__main__':
             content = "Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c2.id,
             user_id = u1.id,
         )
         l7 = Lesson(
@@ -214,7 +214,7 @@ if __name__ == '__main__':
             # Addition Practice (2+2): Next, let's try a slightly more challenging addition problem. Click on the numbers 2 and 2, followed by the "+" and "=" symbols.[Interactive Exercise: 2 + 2]
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c2.id,
             user_id = u1.id,
         )
         l8 = Lesson(
@@ -223,7 +223,7 @@ if __name__ == '__main__':
             #Matching Exercise: Match the written numbers to the corresponding numerical symbols.
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c2.id,
             user_id = u1.id,
         )
         l9 = Lesson(
@@ -231,7 +231,7 @@ if __name__ == '__main__':
             content = "For multisensory learners, you can say the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c2.id,
             user_id = u1.id,
         )
         l10 = Lesson(
@@ -239,7 +239,7 @@ if __name__ == '__main__':
             content = "In this lesson, we explored the concept of addition, which is the operation of putting numbers together to find a total. We practiced adding with simple examples using interactive tools, and we also related addition to real-life situations, like counting candies or toys. Remember that addition is a fundamental math skill that we use daily, and as we progress through the course, we'll build on this foundation to solve more complex math problems. If you have any questions or need help, feel free to reach out. Keep up the good work in your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c2.id,
             user_id = u1.id,
         )
         #-----------------Course Three Lessons-------------
@@ -248,7 +248,7 @@ if __name__ == '__main__':
             content = "Subtraction is a mathematical operation used when we want to find out how much is left when we take away one number from another. It's like figuring out the difference or what remains. We use the '-' symbol to represent subtraction.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c3.id,
             user_id = u1.id,
         )
         l12 = Lesson(
@@ -258,7 +258,7 @@ if __name__ == '__main__':
             # Subtraction Practice (5-2): Try a slightly more challenging subtraction problem. Click on the number 5, the "-" symbol, the number 2, and then the "=" symbol.[Interactive Exercise: 5 - 2]
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c3.id,
             user_id = u1.id,
         )
         l13 = Lesson(
@@ -266,7 +266,7 @@ if __name__ == '__main__':
             content = "Subtraction is something we encounter daily. For example, if you have five sandwiches and you eat two of them, you'll have three sandwiches left. Or, if you have seven cars and you give away three, you'll have four cars remaining.Think of real-life situations where subtraction is used, like counting the cookies you have or figuring out how many days are left until your birthday. Try solving these subtraction problems mentally, and use objects or examples from your own life to help you understand.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c3.id,
             user_id = u1.id,
         )
         l14 = Lesson(
@@ -274,7 +274,7 @@ if __name__ == '__main__':
             content = "For those who find it helpful, you can say the numbers out loud as you see them on the screen. Combining visual and auditory cues can reinforce your understanding of subtraction.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c3.id,
             user_id = u1.id,
         )
         l15 = Lesson(
@@ -282,7 +282,7 @@ if __name__ == '__main__':
             content = "In this lesson, we've explored the concept of subtraction, which helps us find out what remains when we take one number away from another. We practiced subtraction using interactive tools and related it to real-life situations like counting things in your daily life. Subtraction is a fundamental skill, and as we progress through the course, we'll build on this knowledge to tackle more complex math problems. If you have any questions or need assistance, feel free to ask. Continue doing an excellent job as you embark on your math adventure!",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c3.id,
             user_id = u1.id,
         )
         #-----------------Course Four Lessons-------------
@@ -291,7 +291,7 @@ if __name__ == '__main__':
             content = "Multiplication is like a speedy way of adding things together when we have equal groups or quantities. It's a way to find the total quickly by adding the same number over and over again. We use the '×' symbol to represent multiplication.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c4.id,
             user_id = u1.id,
         )
         l17 = Lesson(
@@ -299,7 +299,7 @@ if __name__ == '__main__':
             content = "Think of multiplication as a shortcut for adding the same number multiple times. For example, 2 × 3 means you're adding 2 three times (2 + 2 + 2), which equals 6.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c4.id,
             user_id = u1.id,
         )
         l18 = Lesson(
@@ -309,7 +309,7 @@ if __name__ == '__main__':
             #Multiplication Practice (4 × 2): Try another multiplication problem. Click on the number 4, then the "×" symbol, and finally, click on the number 2. [Interactive Exercise: 4 × 2]
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c4.id,
             user_id = u1.id,
         )
         l19 = Lesson(
@@ -317,7 +317,7 @@ if __name__ == '__main__':
             content = "Multiplication is a handy skill for everyday situations. Imagine you have 3 boxes of chocolates, and each box contains 5 chocolates. To find out how many chocolates you have in total, you can use multiplication (3 x 5 = 15). Think of other real-life scenarios where multiplication can be applied, like calculating the total number of apples in several baskets or finding out how much money you'll have if you earn a certain amount each day for a week.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c4.id,
             user_id = u1.id,
         )
         l20 = Lesson(
@@ -325,7 +325,7 @@ if __name__ == '__main__':
             content = "In summary, multiplication is a valuable skill that helps us find totals quickly when we have equal groups or quantities. We've practiced basic multiplication using interactive tools and explored its relevance in solving real-life problems. As we move forward, remember that multiplication is a powerful mathematical tool with numerous practical applications. If you have any questions or need assistance, don't hesitate to ask. Great job on your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c4.id,
             user_id = u1.id,
         )
         #-----------------Course Five Lessons-------------
@@ -334,7 +334,7 @@ if __name__ == '__main__':
             content = "Division is like a tool we use when we want to share things equally among a group or create equal-sized groups. It helps us find out how many items each person or group should get. We use the '÷' symbol to represent division.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c5.id,
             user_id = u1.id,
         )
         l22 = Lesson(
@@ -342,7 +342,7 @@ if __name__ == '__main__':
             content = "Think of division as a way to share things fairly. For example, if you have 6 candies and want to share them equally among 3 friends, division helps you find out that each friend gets 2 candies (6 ÷ 3 = 2).",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c5.id,
             user_id = u1.id,
         )
         l23 = Lesson(
@@ -352,7 +352,7 @@ if __name__ == '__main__':
             # Division Practice (15 ÷ 3): Try another division problem. Click on the number 15, then the "÷" symbol, and finally, click on the number 3. [Interactive Exercise: 15 ÷ 3]
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c5.id,
             user_id = u1.id,
         )
         l24 = Lesson(
@@ -360,7 +360,7 @@ if __name__ == '__main__':
             content = "Division is a practical skill for everyday situations. Imagine you have 10 pencils, and you want to divide them equally among 2 friends. You can use division to determine that each friend gets 5 pencils (10 ÷ 2 = 5). Think of other real-life scenarios where division can be applied, like dividing your money among different savings goals.",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c5.id,
             user_id = u1.id,
         )
         l25 = Lesson(
@@ -368,7 +368,7 @@ if __name__ == '__main__':
             content = "In summary, division is a practical skill that helps us share things equally or create groups of equal size. We've practiced division using interactive tools and explored its relevance in solving real-life sharing and grouping problems. As we continue, remember that division is a valuable mathematical tool with numerous practical applications in everyday situations. If you have any questions or need assistance, feel free to reach out. Keep up the great work on your math journey!",
             duration = "1 week",
             score = False,
-            course_id = c1.id,
+            course_id = c5.id,
             user_id = u1.id,
         )
 

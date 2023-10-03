@@ -24,14 +24,16 @@ class User( db.Model, SerializerMixin ):
     bio = db.Column( db.String )
 
     #Disability
-    visual_impairment = db.Column( db.String )
-    hearing_impairment = db.Column( db.String )
-    motor_impairment = db.Column( db.String )
-    cognitive_impairment = db.Column( db.String )
-    Other = db.Column( db.String )
+    # visual_impairment = db.Column( db.String )
+    # hearing_impairment = db.Column( db.String )
+    # motor_impairment = db.Column( db.String )
+    # cognitive_impairment = db.Column( db.String )
+    # Other = db.Column( db.String )
 
     #Adaptability with learning experience
-    adaptability_options = db.Column( db. String)
+
+    # adaptability_options = db.Column( db. String)
+
     # Adjusting text size
     # Using screen readers
     # Customizing color schemes
@@ -39,14 +41,17 @@ class User( db.Model, SerializerMixin ):
     # Other (Please specify)
     
     #Crucial aspects
-    crucial_aspects = db.Column( db.String )
+
+    # crucial_aspects = db.Column( db.String )
+
     #Clear and simple language
     #Text-to-speech features
     #Interactive transcripts
     #Readable fonts and layouts
     #Other (Please specify)
 
-    ideal_feature = db.Column( db.String )
+    # ideal_feature = db.Column( db.String )
+
     #Collaborative learning spaces
     #Personalized learning plans
     #Simplified navigation

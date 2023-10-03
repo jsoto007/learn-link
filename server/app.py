@@ -306,6 +306,7 @@ api.add_resource(LessonByID, '/lesson/<int:id>')
 #---------------------------------------------------------------------
 
 
+#-------------------------------This will be all the chatbot stuff-----------------
 class Chatbot(Resource):
     def post(self, id):
         user = User.query.filter(User.id == id).first()
@@ -368,11 +369,11 @@ api.add_resource(Chatbot, '/adda/chat/<int:id>')
 
 class AddaCourseOne(Resource):
     def post(self, id):
-        user = User.query.filter(User.id == id).first()
-        print(user)
         load_dotenv()
         openai_api_key=os.getenv("OPENAI_API_KEY")
         
+        course = Course.query.filter(Course.id == id).first()
+        #Definitely needs some work, but we can do it rather easily.
 
         data = request.get_json()
         user_message = data.get('message')
@@ -382,7 +383,22 @@ class AddaCourseOne(Resource):
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
                 messages=[
-                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons some users may require assistance in: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together!", },
+                {'role': 'system', 'content': (
+                f"You are Adda, our educational assistant chatbot. "
+                f"Please keep it simple, no highly scientific words"
+                f"I'm here to assist you with your learning journey. "
+                f"Feel free to ask any questions or request help related to the following lessons:\n\n"
+                f"Assist them with the course content, ask for what they need help with"
+                f"1. What are Numbers? \n"
+                f"2. Let's Start Counting!\n"
+                f"3. Number Recognition\n"
+                f"4. Multisensory Learning\n"
+                f"5. Introduction to Numbers Recap\n\n"
+                f"{course.lessons}\n"
+                f"Please let me know which lesson you'd like assistance with, "
+                f"or if you have any other educational queries."
+            ),
+            },
                 {'role': 'user', 'content': user_message},
                 ],
             )
@@ -398,7 +414,140 @@ class AddaCourseOne(Resource):
             print('Error:', str(e))
             return {'error': 'An error occurred'}, 500
 
-api.add_resource(AddaCourseOne, '/adda/course/one/chat/')
+api.add_resource(AddaCourseOne, '/adda/course/<int:id>/chat/')
+
+class AddaCourseTwo(Resource):
+    def post(self):
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+        #Definitely needs some work, but we can do it rather easily.
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons that our users may require assistance in, please refrain to speaking about anything other than these lessons: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together! \n Ask the user where they are finding difficulty, and try to assist them in a positive manner to complete the lesson", },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(AddaCourseTwo, '/adda/course/<int:id>/chat/')
+
+class AddaCourseThree(Resource):
+    def post(self):
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+        #Definitely needs some work, but we can do it rather easily.
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons that our users may require assistance in, please refrain to speaking about anything other than these lessons: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together! \n Ask the user where they are finding difficulty, and try to assist them in a positive manner to complete the lesson", },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(AddaCourseThree, '/adda/course/<int:id>/chat/')
+
+class AddaCourseFour(Resource):
+    def post(self):
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+        #Definitely needs some work, but we can do it rather easily.
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons that our users may require assistance in, please refrain to speaking about anything other than these lessons: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together! \n Ask the user where they are finding difficulty, and try to assist them in a positive manner to complete the lesson", },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(AddaCourseFour, '/adda/course/<int:id>/chat/')
+
+
+class AddaCourseFive(Resource):
+    def post(self):
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+        #Definitely needs some work, but we can do it rather easily.
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons that our users may require assistance in, please refrain to speaking about anything other than these lessons: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together! \n Ask the user where they are finding difficulty, and try to assist them in a positive manner to complete the lesson", },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(AddaCourseFive, '/adda/course/<int:id>/chat/')
 
 
 if __name__ == '__main__':
