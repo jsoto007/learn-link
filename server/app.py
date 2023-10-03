@@ -366,39 +366,39 @@ api.add_resource(Chatbot, '/adda/chat/<int:id>')
 
 # Can use this below with a new route to essentially have Adda do whatever, want a route with a pure focus of assisting in course 1? Doable. We'll look over this shortly
 
-# class Chatbot(Resource):
-#     def post(self, id):
-#         user = User.query.filter(User.id == id).first()
-#         print(user)
-#         load_dotenv()
-#         openai_api_key=os.getenv("OPENAI_API_KEY")
+class AddaCourseOne(Resource):
+    def post(self, id):
+        user = User.query.filter(User.id == id).first()
+        print(user)
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
         
 
-#         data = request.get_json()
-#         user_message = data.get('message')
-#         user_id = data.get('user_id')
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
 
-#         try:
-#             response = openai.ChatCompletion.create(
-#                 model='gpt-3.5-turbo',
-#                 messages=[
-#                 {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
-#                 {'role': 'user', 'content': user_message},
-#                 ],
-#             )
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot. Here are the lessons some users may require assistance in: \n (lesson one) What are Numbers? \n Numbers are the building blocks of mathematics. They are symbols used to represent quantity, order, and position. Numbers enable us to understand and communicate about the world around us. Whether we're talking about the age of a friend, the cost of groceries, or the time on a clock, numbers play a vital role in our daily lives. \n (lesson two) Let's Start Counting! \n Let's begin with the basics: counting from 1 to 10. We'll use interactive online exercises to make learning fun and engaging. \n (lesson three) Number Recognition \n Recognizing numbers is essential. Let's practice recognizing numbers by matching them to their written form. \n (lesson four) Multisensory Learning \n For those who benefit from multisensory learning, try saying the numbers out loud as you see them on the screen. This combines visual and auditory cues, reinforcing your understanding. \n (lesson five) Introduction to Numbers Recap \n In this lesson, we've explored the fundamental concept of numbers. We've practiced counting from 1 to 10 and focused on the importance of number recognition. As we move forward, keep in mind that numbers are the building blocks of mathematics. In the next lesson, we'll explore basic addition to build on what we've learned today. Feel free to ask if you have any questions or need assistance as we take this mathematical journey together!", },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
 
-#             bot_response = response['choices'][0]['message']['content']
+            bot_response = response['choices'][0]['message']['content']
 
-#             chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
-#             db.session.add(chat_entry)
-#             db.session.commit()
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
 
-#             return {'botResponse': bot_response}, 200
-#         except Exception as e:
-#             print('Error:', str(e))
-#             return {'error': 'An error occurred'}, 500
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
 
-# api.add_resource(Chatbot, '/adda/chat/<int:id>')
+api.add_resource(AddaCourseOne, '/adda/course/one/chat/')
 
 
 if __name__ == '__main__':
