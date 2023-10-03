@@ -320,27 +320,51 @@ class Chatbot(Resource):
 
         #timer / hit them with a Hi! How can I help you?
         # Also if user.chat_histories.length < 0 
+
+        # So we'll basically be using if user.chat_histories.length < 0 and set a timer to send a message
+
         try:
-            response = openai.ChatCompletion.create(
-                model='gpt-3.5-turbo',
-                messages=[
-                {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
-                {'role': 'user', 'content': user_message},
-                ],
-            )
+            if user.chat_history and len(user.chat_history) > 1: 
+                response = openai.ChatCompletion.create(
+                    model='gpt-3.5-turbo',
+                    messages=[
+                    {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
+                    {'role': 'user', 'content': user_message},
+                    ],
+                )
 
-            bot_response = response['choices'][0]['message']['content']
+                bot_response = response['choices'][0]['message']['content']
 
-            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
-            db.session.add(chat_entry)
-            db.session.commit()
+                chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+                db.session.add(chat_entry)
+                db.session.commit()
 
-            return {'botResponse': bot_response}, 200
+                return {'botResponse': bot_response}, 200
+            elif len(user.chat_history) < 1:
+                response = openai.ChatCompletion.create(
+                    model='gpt-3.5-turbo',
+                    messages=[
+                    {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot, say hello and ask about acccesibility options. "},
+                    {'role': 'user', 'content': user_message},
+                    ],
+                )
+
+                bot_response = response['choices'][0]['message']['content']
+
+                chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+                db.session.add(chat_entry)
+                db.session.commit()
+
+                return {'botResponse': bot_response}, 200
+
         except Exception as e:
             print('Error:', str(e))
             return {'error': 'An error occurred'}, 500
 
 api.add_resource(Chatbot, '/adda/chat/<int:id>')
+
+
+# Can use this below with a new route to essentially have Adda do whatever, want a route with a pure focus of assisting in course 1? Doable. We'll look over this shortly
 
 # class Chatbot(Resource):
 #     def post(self, id):
