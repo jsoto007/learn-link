@@ -65,9 +65,9 @@ export default function page() {
             <div className='w-3/5'>
             <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>8</p>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer1'>Six</label>
+                <label className="font-medium mt-2" htmlFor='answer1'>Six</label>
                 <input 
-                className="mt-1" 
+                className="mt-3" 
                 id="answer1" 
                 value="incorrect" 
                 name="question1answer"
@@ -79,9 +79,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer1'>Five</label>
+                <label className="font-medium mt-2" htmlFor='answer1'>Five</label>
                 <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer1" 
                   value="incorrect" 
                   type='radio'
@@ -92,9 +92,9 @@ export default function page() {
                     }}/>
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer1'>Eight</label>
+            <label className="font-medium mt-2" htmlFor='answer1'>Eight</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer1" 
                   value="correct" 
                   type='radio'
@@ -106,9 +106,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer1'>Four</label>
+            <label className="font-medium mt-2" htmlFor='answer1'>Four</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer2" 
                   value="incorrect" 
                   type='radio'
@@ -126,9 +126,9 @@ export default function page() {
             <div className='w-3/5'>
             <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>3</p>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer2'>Nine</label>
+                <label className="font-medium mt-2" htmlFor='answer2'>Nine</label>
                 <input 
-                className="mt-1" 
+                className="mt-3" 
                 id="answer2" 
                 value="incorrect" 
                 name="question2answer"
@@ -140,9 +140,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer2'>Three</label>
+                <label className="font-medium mt-2" htmlFor='answer2'>Three</label>
                 <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer1" 
                   value="correct" 
                   type='radio'
@@ -153,9 +153,9 @@ export default function page() {
                     }}/>
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer2'>Seven</label>
+            <label className="font-medium mt-2" htmlFor='answer2'>Seven</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer2" 
                   value="incorrect" 
                   type='radio'
@@ -167,9 +167,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer2'>Two</label>
+            <label className="font-medium mt-2" htmlFor='answer2'>Two</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer2" 
                   value="incorrect" 
                   type='radio'
@@ -187,9 +187,9 @@ export default function page() {
             <div className='w-3/5'>
             <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>7</p>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer3'>Ten</label>
+                <label className="font-medium mt-2" htmlFor='answer3'>Ten</label>
                 <input 
-                className="mt-1" 
+                className="mt-3" 
                 id="answer3" 
                 value="incorrect" 
                 name="question3answer"
@@ -201,9 +201,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer3'>Eight</label>
+                <label className="font-medium mt-2" htmlFor='answer3'>Eight</label>
                 <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer3" 
                   value="incorrect" 
                   type='radio'
@@ -214,9 +214,9 @@ export default function page() {
                     }}/>
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer3'>Seven</label>
+            <label className="font-medium mt-2" htmlFor='answer3'>Seven</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer3" 
                   value="correct" 
                   type='radio'
@@ -228,9 +228,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer3'>Ten</label>
+            <label className="font-medium mt-2" htmlFor='answer3'>Ten</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer3" 
                   value="incorrect" 
                   type='radio'
@@ -248,9 +248,9 @@ export default function page() {
             <div className='w-3/5'>
             <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>2</p>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer4'>Three</label>
+                <label className="font-medium mt-2" htmlFor='answer4'>Three</label>
                 <input 
-                className="mt-1" 
+                className="mt-3" 
                 id="answer4" 
                 value="incorrect" 
                 name="question4answer"
@@ -262,9 +262,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer4'>Seven</label>
+                <label className="font-medium mt-2" htmlFor='answer4'>Seven</label>
                 <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer4" 
                   value="incorrect" 
                   type='radio'
@@ -275,9 +275,9 @@ export default function page() {
                     }}/>
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer4'>Four</label>
+            <label className="font-medium mt-2" htmlFor='answer4'>Four</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer4" 
                   value="incorrect" 
                   type='radio'
@@ -289,9 +289,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer4'>Two</label>
+            <label className="font-medium mt-2" htmlFor='answer4'>Two</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer4" 
                   value="correct" 
                   type='radio'
@@ -309,9 +309,9 @@ export default function page() {
             <div className='w-3/5'>
             <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>1</p>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer5'>One</label>
+                <label className="font-medium mt-2" htmlFor='answer5'>One</label>
                 <input 
-                className="mt-1" 
+                className="mt-3" 
                 id="answer5" 
                 value="correct" 
                 name="question5answer"
@@ -323,9 +323,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-                <label className="font-medium" htmlFor='answer5'>Six</label>
+                <label className="font-medium mt-2" htmlFor='answer5'>Six</label>
                 <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer5" 
                   value="incorrect" 
                   type='radio'
@@ -336,9 +336,9 @@ export default function page() {
                     }}/>
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer5'>Five</label>
+            <label className="font-medium mt-2" htmlFor='answer5'>Five</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer5" 
                   value="incorrect" 
                   type='radio'
@@ -350,9 +350,9 @@ export default function page() {
                 />
             </div>
             <div className='flex justify-between'>
-            <label className="font-medium" htmlFor='answer5'>Two</label>
+            <label className="font-medium mt-2" htmlFor='answer5'>Two</label>
             <input 
-                  className="mt-1" 
+                  className="mt-3" 
                   id="answer5" 
                   value="incorrect" 
                   type='radio'
