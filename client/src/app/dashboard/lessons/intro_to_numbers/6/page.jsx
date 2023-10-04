@@ -28,7 +28,7 @@ export default function page() {
           <Link href='/dashboard/lessons'>
             <button className='mt-4 rounded-full bg-[#663399] border-8 border-[#663399] px-3 py-1.5 text-md font-semibold leading-6 text-white shadow-sm hover:text-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Back to Lessons!</button>
           </Link>
-          </div>
+        </div>
       </div>
     
       return (
