@@ -1,6 +1,10 @@
 # learn-link
-For setup
-- run in terminal: `pipenv install && pipenv shell``
+For front-end setup
+- run in terminal: `npm install``
+- then run `npm run dev`` to start the front-end server
+
+For back-end setup
+- run in a new terminal: `pipenv install && pipenv shell``
 
 In the server folder:
 - `export FLASK_APP-app.py`
@@ -11,4 +15,4 @@ In the server folder:
 - `flask db revision --autogenerate -m 'message here!'`
 - `flask db upgrade head`
 
-Run app.py to start the server! ^_^
+Run app.py to start the back-end server! ^_^
