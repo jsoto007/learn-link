@@ -13,7 +13,7 @@ export default function UserDashboard() {
       <div className="bg-dark-blue h-screen p-5 pt-8 w-72 flex justify-center">
         <div className="">
           <img 
-            className="h-20 mx-auto object-cover rounded-full w-20 border-2"
+            className="h-20 mx-auto object-cover rounded-full w-20 border-2 mt-10"
             src="https://images.pexels.com/photos/7275385/pexels-photo-7275385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           />
           <div className="sm:mt-10 dm:mt-10 lg:mt-20">
@@ -80,10 +80,15 @@ export default function UserDashboard() {
         </div>
       </div>
      
-      <div className="p-7">
-        <h1 className="text-2xl font-semibold">
-        Home Page
-        </h1>
+      <div className="p-7 bg-neutral-200 my-20 rounded-xl">
+        <div>
+          <h1 className="text-2xl font-semibold">
+            Dashboard
+          </h1>
+        </div>
+        <div>
+          <h1 className="mt-20 pr-72">Learning Today</h1>
+        </div>
       </div>
      
     </div>
