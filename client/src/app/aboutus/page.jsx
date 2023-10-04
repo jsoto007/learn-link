@@ -3,6 +3,8 @@ import React from "react";
 export default function AboutUs() {
   return (
     <main className="flex h-screen min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 bg-violet-50">
+        {/* <img src="/aboutus.png" alt="An image of someone typing on a keyboard" className="z-0" />
+        <h1 className="">Bridging the math education gap</h1> */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
         <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">

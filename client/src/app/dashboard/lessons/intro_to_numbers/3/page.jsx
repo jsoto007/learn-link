@@ -39,340 +39,344 @@ export default function page() {
     }
 
     const correctArray = ["Great job!", "You got it!", "That's right!", "Alright!"]
-    const incorrectArray = ["Try again", "Almost", "Not quite", "Try another"]
+    const incorrectArray = ["Try again...", "Almost...", "Not quite...", "Try another..."]
 
     const getResponse = (arr) => {  
         const response = arr[Math.floor(Math.random() * arr.length)]
         return response
     }
 
+    console.log(answer5)
+
+
+
     const layout = 
-    <div className="font-sans text-blue-800 mb-12">
-      <h1 className='text-center text-4xl font-semibold mb-10 underline'>{course.title}</h1>
+    <div className="font-sans text-[#333333] mb-12 w-4/5">
+      <h1 className='text-center text-3xl font-semibold mb-10'>{course.title}</h1>
       <div className='flex justify-center mb-5'>
-        <p className="text-xl font-medium w-4/5" >{course.content}</p>
+        <img className="text-center w-32 mr-5 mb-5" src='/Adda.svg' alt="Adda" />
+        <p className="text-md font-medium mb-8 w-3/4">{course.content}</p>
       </div>
       <div className='flex justify-center mb-5'>
         <p>({course.task})</p>
       </div>
-      <div className='flex justify-center mb-3'>
-        <p>1</p>
-        <div className='flex justify-around w-2/3'>
-            <div>
-                <label htmlFor='answer1'>One</label>
+      <div className='flex justify-center mb-10'>
+      <div className='flex justify-around w-2/3'>
+            <div className='w-3/5'>
+            <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>8</p>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer1'>Six</label>
                 <input 
-                className="ml-2" 
+                className="mt-1" 
                 id="answer1" 
-                value="correct" 
-                name="question 1 answer 1"
+                value="incorrect" 
+                name="question1answer"
                 type='radio'
                 onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse1(getResponse(incorrectArray))
+                    }}  
+                />
+            </div>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer1'>Five</label>
+                <input 
+                  className="mt-1" 
+                  id="answer1" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question1answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse1(getResponse(incorrectArray))
+                    }}/>
+            </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer1'>Eight</label>
+            <input 
+                  className="mt-1" 
+                  id="answer1" 
+                  value="correct" 
+                  type='radio'
+                  name="question1answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse1(getResponse(correctArray))
                     }}  
                 />
             </div>
-            <div>
-                <label htmlFor='answer1'>Three</label>
-                <input 
-                  className="ml-2" 
-                  id="answer1" 
-                  value="incorrect" 
-                  type='radio'
-                  name="question 1 answer 2" 
-                  onClick={ (e) => {
-                    handleCheck(e)
-                    setResponse1(getResponse(incorrectArray))
-                    }}  
-                />
-            </div>
-            <div>
-            <label htmlFor='answer1'>Seven</label>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer1'>Four</label>
             <input 
-                  className="ml-2" 
-                  id="answer1" 
+                  className="mt-1" 
+                  id="answer2" 
                   value="incorrect" 
                   type='radio'
-                  name="question 1 answer 3" 
+                  name="question1answer" 
                   onClick={ (e) => {
                     handleCheck(e)
                     setResponse1(getResponse(incorrectArray))
                     }}  
                 />
             </div>
-            <div>
-            <label htmlFor='answer1'>Two</label>
-            <input 
-                  className="ml-2" 
-                  id="answer1" 
-                  value="incorrect" 
-                  type='radio'
-                  name="question 1 answer 4" 
-                  onClick={ (e) => {
-                    handleCheck(e)
-                    setResponse1(getResponse(incorrectArray))
-                    }}  
-                />
-            </div>
+            <p className='text-center font-semibold text-[#0F4880] mt-3'>{response1}</p>
         </div>
-        <p>{response1}</p>
-     </div>
-     <div className='flex justify-center mb-3'>
-        <p>4</p>
-        <div className='flex justify-around w-2/3'>
-            <div>
-            <label htmlFor='answer2'>Three</label>
-            <input 
-              className="ml-2" 
-              id="answer2" 
-              value="incorrect" 
-              name="question 2 answer 1"
-              type='radio'  
-              onClick={(e) => {
-                handleCheck(e)
-                setResponse2(getResponse(incorrectArray))
-                }}  
-                />
-            </div>
-            <div>
-            <label htmlFor='answer 1'>Five</label>
-            <input 
-                className="ml-2" 
+        </div>
+         <div className='flex justify-around w-2/3'>
+            <div className='w-3/5'>
+            <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>3</p>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer2'>Nine</label>
+                <input 
+                className="mt-1" 
                 id="answer2" 
                 value="incorrect" 
-                name="question 2 answer 2" 
+                name="question2answer"
                 type='radio'
-                onClick={(e) => {
+                onClick={ (e) => {
                     handleCheck(e)
                     setResponse2(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
-            <div>
-            <label htmlFor='answer 1'>Four</label>
-            <input 
-                className="ml-2" 
-                id="answer2" 
-                value="correct" 
-                name="question 2 answer 3" 
-                type='radio'
-                onClick={(e) => {
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer2'>Three</label>
+                <input 
+                  className="mt-1" 
+                  id="answer1" 
+                  value="correct" 
+                  type='radio'
+                  name="question2answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse2(getResponse(correctArray))
-                    }}
-                 />
+                    }}/>
             </div>
-            <div>
-            <label htmlFor='answer 1'>Ten</label>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer2'>Seven</label>
             <input 
-                className="ml-2" 
-                id="answer2" 
-                value="incorrect" 
-                name="question 2 answer 4" 
-                type='radio'
-                onClick={(e) => {
+                  className="mt-1" 
+                  id="answer2" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question2answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse2(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer2'>Two</label>
+            <input 
+                  className="mt-1" 
+                  id="answer2" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question2answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse2(getResponse(incorrectArray))
+                    }}  
+                />
+            </div>
+            <p className='text-center font-semibold text-[#0F4880] mt-3'>{response2}</p>
         </div>
-        {<p>{response2}</p>}
-     </div>
-     <div className='flex justify-center mb-3'>
-        <p>7</p>
-        <div className='flex justify-evenly w-2/3'>
-            <div>
-            <label htmlFor='answer 1'>One</label>
-            <input 
-                className="ml-2" 
+        </div>
+         <div className='flex justify-around w-2/3'>
+            <div className='w-3/5'>
+            <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>7</p>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer3'>Ten</label>
+                <input 
+                className="mt-1" 
                 id="answer3" 
                 value="incorrect" 
-                name="question 3 answer 1" 
+                name="question3answer"
                 type='radio'
-                onClick={(e) => {
+                onClick={ (e) => {
                     handleCheck(e)
                     setResponse3(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
-            <div>
-            <label htmlFor='answer 1'>Three</label>
-            <input 
-                className="ml-2" 
-                id="answer3" 
-                value="incorrect" 
-                name="question 3 answer 2" 
-                type='radio'
-                onClick={(e) => {
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer3'>Eight</label>
+                <input 
+                  className="mt-1" 
+                  id="answer3" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question3answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse3(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}/>
             </div>
-            <div>
-            <label htmlFor='answer 1'>Seven</label>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer3'>Seven</label>
             <input 
-                className="ml-2" 
-                id="answer3" 
-                value="correct" 
-                name="question 3 answer 3" 
-                type='radio'
-                onClick={(e) => {
+                  className="mt-1" 
+                  id="answer3" 
+                  value="correct" 
+                  type='radio'
+                  name="question3answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse3(getResponse(correctArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
-            <div>
-            <label htmlFor='answer 1'>Two</label>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer3'>Ten</label>
             <input 
-                className="ml-2" 
-                id="answer3" 
-                value="incorrect" 
-                name="question 3 answer 4" 
-                type='radio'
-                onClick={(e) => {
+                  className="mt-1" 
+                  id="answer3" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question3answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse3(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
+            <p className='text-center font-semibold text-[#0F4880] mt-3'>{response3}</p>
         </div>
-        {response3}
-     </div>
-     <div className='flex justify-center mb-3'>
-        <p>10</p>
-        <div className='flex justify-evenly w-2/3'>
-            <div>
-            <label htmlFor='answer 1'>One</label>
-            <input 
-                className="ml-2" 
+        </div>
+        <div className='flex justify-around w-2/3'>
+            <div className='w-3/5'>
+            <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>2</p>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer4'>Three</label>
+                <input 
+                className="mt-1" 
                 id="answer4" 
                 value="incorrect" 
-                name="question 4 answer 1" 
+                name="question4answer"
                 type='radio'
-                onClick={(e) => {
+                onClick={ (e) => {
                     handleCheck(e)
                     setResponse4(getResponse(incorrectArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
-            <div>
-            <label htmlFor='answer 1'>Ten</label>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer4'>Seven</label>
+                <input 
+                  className="mt-1" 
+                  id="answer4" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question4answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse4(getResponse(incorrectArray))
+                    }}/>
+            </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer4'>Four</label>
             <input 
-                className="ml-2" 
-                id="answer4" 
-                value="correct" 
-                name="question 4 answer 2" 
-                type='radio'
-                onClick={(e) => {
+                  className="mt-1" 
+                  id="answer4" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question4answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse4(getResponse(incorrectArray))
+                    }}  
+                />
+            </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer4'>Two</label>
+            <input 
+                  className="mt-1" 
+                  id="answer4" 
+                  value="correct" 
+                  type='radio'
+                  name="question4answer" 
+                  onClick={ (e) => {
                     handleCheck(e)
                     setResponse4(getResponse(correctArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
-            <div>
-            <label htmlFor='answer 1'>Seven</label>
-            <input 
-                className="ml-2" 
-                id="answer4" 
-                value="incorrect" 
-                name="question 4 answer 3" 
-                type='radio'
-                onClick={(e) => {
-                    handleCheck(e)
-                    setResponse4(getResponse(incorrectArray))
-                    }}
-                 />
-            </div>
-            <div>
-            <label htmlFor='answer 1'>Two</label>
-            <input 
-                className="ml-2" 
-                id="answer4" 
-                value="incorrect" 
-                name="question 4 answer 4" 
-                type='radio'
-                onClick={(e) => {
-                    handleCheck(e)
-                    setResponse4(getResponse(incorrectArray))
-                    }}
-                 />
-            </div>
+            <p className='text-center font-semibold text-[#0F4880] mt-3'>{response4}</p>
         </div>
-        {response4}
-     </div>
-     <div className='flex justify-center mb-7'>
-        <p>8</p>
-        <div className='flex justify-evenly w-2/3'>
-            <div>
-            <label htmlFor='answer 1'>Nine</label>
-            <input 
-                className="ml-2" 
-                id="answer5" 
-                value="incorrect" 
-                name="question 5 answer 1" 
-                type='radio'
-                onClick={(e) => {
-                    handleCheck(e)
-                    setResponse5(getResponse(incorrectArray))
-                    }}
-                 />
-            </div>
-            <div>
-            <label htmlFor='answer 1'>Five</label>
-            <input 
-                className="ml-2" 
-                id="answer5" 
-                value="incorrect" 
-                name="question 5 answer 2" 
-                type='radio'
-                onClick={(e) => {
-                    handleCheck(e)
-                    setResponse5(getResponse(correctArray))
-                    }}
-                 />
-            </div>
-            <div>
-            <label htmlFor='answer 1'>Seven</label>
-            <input 
-                className="ml-2" 
-                id="answer5" 
-                value="incorrect" 
-                name="question 5 answer 3" 
-                type='radio'
-                onClick={(e) => {
-                    handleCheck(e)
-                    setResponse5(getResponse(incorrectArray))
-                    }}
-                 />
-            </div>
-            <div>
-            <label htmlFor='answer 1'>Eight</label>
-            <input 
-                className="ml-2" 
+        </div>
+        <div className='flex justify-around w-2/3'>
+            <div className='w-3/5'>
+            <p className='rounded-md border-4 border-[#0F4880] text-center text-xl font-bold text-[#333333] mb-3'>1</p>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer5'>One</label>
+                <input 
+                className="mt-1" 
                 id="answer5" 
                 value="correct" 
-                name="question 5 answer 4" 
+                name="question5answer"
                 type='radio'
-                onClick={(e) => {
+                onClick={ (e) => {
                     handleCheck(e)
                     setResponse5(getResponse(correctArray))
-                    }}
-                 />
+                    }}  
+                />
             </div>
+            <div className='flex justify-between'>
+                <label className="font-medium" htmlFor='answer5'>Six</label>
+                <input 
+                  className="mt-1" 
+                  id="answer5" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question5answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse5(getResponse(incorrectArray))
+                    }}/>
+            </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer5'>Five</label>
+            <input 
+                  className="mt-1" 
+                  id="answer5" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question5answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse5(getResponse(incorrectArray))
+                    }}  
+                />
+            </div>
+            <div className='flex justify-between'>
+            <label className="font-medium" htmlFor='answer5'>Two</label>
+            <input 
+                  className="mt-1" 
+                  id="answer5" 
+                  value="incorrect" 
+                  type='radio'
+                  name="question5answer" 
+                  onClick={ (e) => {
+                    handleCheck(e)
+                    setResponse5(getResponse(incorrectArray))
+                    }}  
+                />
+            </div>
+            <p className='text-center font-semibold text-[#0F4880] mt-3'>{response5}</p>
         </div>
-        {response5}
+        </div>
      </div>
-      <div className='flex justify-around'>
-      <Link href='/dashboard/lessons/intro_to_numbers/2'>
-        <button className='mt-4 rounded-full bg-purple-100 border-2 border-purple-100 px-3 py-1.5 text-sm font-semibold leading-6 text-purple-600 shadow-sm hover:bg-purple-50 hover:border-purple-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Previous Lesson</button>
-      </Link>
-      <Link href='/dashboard/lessons/intro_to_numbers/4'>
-        <button className='mt-4 rounded-full bg-blue-800 border-2 border-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 hover:border-blue-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Next Lesson</button>
-      </Link>
-      </div> 
+     <div className='flex justify-around'>
+          <Link href='/dashboard/lessons/intro_to_numbers/4'>
+            <button className='mt-4 rounded-full bg-[#0F4880] border-8 border-[#0F4880] px-3 py-1.5 text-md font-semibold leading-6 text-white shadow-sm hover:text-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Next Lesson!</button>
+          </Link>
+          </div>
+          <div className='flex justify-around'>
+          <Link href='/dashboard/lessons/intro_to_numbers/2'>
+            <button className='mt-3 px-3 py-2 text-sm font-semibold leading-6 text-[#0F4880] underline hover:text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Previous Lesson</button>
+          </Link>
+          </div>
     </div>
     
   return (

@@ -17,34 +17,37 @@ export default function page() {
     }
     
     const layout = (
-        <div className="flex-col font-sans text-blue-800 mb-12">
-          <h1 className='text-center text-4xl font-semibold mb-10 underline'>{course.title}</h1>
-          <div className='flex justify-center mb-10'>
-            <p className="text-xl font-medium w-3/4" >{course.content}</p>
+        <div className="font-sans text-[#333333] mb-12 w-4/5">
+          <h1 className='text-center text-3xl font-semibold mb-10'>{course.title}</h1>
+          <div className='flex justify-center mb-5'>
+            <img className="text-center w-32 mr-5" src='/Adda.svg' alt="Adda" />
+            <p className="text-md font-medium mb-8 w-3/4">{course.content}</p>
           </div>
           <div className='flex justify-center mb-10'>
-            <button onClick={() => speak("1")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>1</button>
-            <button onClick={() => speak("2")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>2</button>
-            <button onClick={() => speak("3")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>3</button>
-            <button onClick={() => speak("4")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>4</button>
-            <button onClick={() => speak("5")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>5</button>
+            <button onClick={() => speak("1")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>1</button>
+            <button onClick={() => speak("2")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>2</button>
+            <button onClick={() => speak("3")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>3</button>
+            <button onClick={() => speak("4")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>4</button>
+            <button onClick={() => speak("5")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>5</button>
           </div>
           <div className='flex justify-center mb-10'>
-            <button onClick={() => speak("6")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>6</button>
-            <button onClick={() => speak("7")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>7</button>
-            <button onClick={() => speak("8")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>8</button>
-            <button onClick={() => speak("9")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>9</button>
-            <button onClick={() => speak("10")} className='bg-blue-800 mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>10</button>
+            <button onClick={() => speak("6")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>6</button>
+            <button onClick={() => speak("7")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>7</button>
+            <button onClick={() => speak("8")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>8</button>
+            <button onClick={() => speak("9")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>9</button>
+            <button onClick={() => speak("10")} className='rounded-md border-4 border-[#0F4880] mr-10 ml-10 px-5 py-1.5 text-xl font-semibold leading-6 text-[#333333] shadow-sm hover:bg-[#0F4880] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>10</button>
           </div>
           <div className='flex justify-center mb-5'>
             <p className='text-center'>({course.task})</p>
           </div>
           <div className='flex justify-around'>
-          <Link href='/dashboard/lessons/intro_to_numbers/1'>
-            <button className='mt-4 rounded-full bg-purple-100 border-2 border-purple-100 px-3 py-1.5 text-sm font-semibold leading-6 text-purple-600 shadow-sm hover:bg-purple-50 hover:border-purple-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Previous Lesson</button>
-          </Link>
           <Link href='/dashboard/lessons/intro_to_numbers/3'>
-            <button className='mt-4 rounded-full bg-blue-800 border-2 border-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 hover:border-blue-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Next Lesson</button>
+            <button className='mt-4 rounded-full bg-[#0F4880] border-8 border-[#0F4880] px-3 py-1.5 text-md font-semibold leading-6 text-white shadow-sm hover:text-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Next Lesson!</button>
+          </Link>
+          </div>
+          <div className='flex justify-around'>
+          <Link href='/dashboard/lessons/intro_to_numbers/1'>
+            <button className='mt-3 px-3 py-2 text-sm font-semibold leading-6 text-[#0F4880] underline hover:text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Previous Lesson</button>
           </Link>
           </div>
         </div>

@@ -10,16 +10,19 @@ export default function page() {
   }
 
     const layout = 
-    <div className="font-sans text-blue-800 mb-12">
-      <h1 className='text-center text-4xl font-semibold mb-10 underline'>{course.title}</h1>
-      <ul className='mb-20'>
+    <div className="font-sans text-[#333333] mb-12 w-4/5">
+      <h1 className='text-center text-3xl font-semibold mb-10'>{course.title}</h1>
+      <div className='flex justify-center mb-20'>
+      <img className="text-center w-32 mr-5 mb-10" src='/Adda.svg' alt="Adda" />
+      <ul className=''>
       {course.objectives.map((objective, index) => {
-        return <li className="text-xl font-medium mb-8" key={index}>{index + 1}. {objective}</li>
+        return <li className="text-md font-medium mb-8" key={index}>{index + 1}. {objective}</li>
       })}
       </ul>
+      </div>
       <Link href='/dashboard/lessons/intro_to_numbers/1'>
         <div className='flex justify-center'>
-          <button className='mt-4 w-1/2 rounded-full bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Start Learning</button>
+          <button className='mt-4 rounded-full bg-[#0F4880] border-8 border-[#0F4880] px-3 py-1.5 text-md font-semibold leading-6 text-white shadow-sm hover:text-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Start Learning</button>
         </div>
       </Link>
     </div>
