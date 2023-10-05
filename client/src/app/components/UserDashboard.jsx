@@ -1,40 +1,96 @@
 import Image from "next/image"
+import user from "../../../public/user.svg"
+import book from "../../../public/book.svg"
+import trending from "../../../public/trending.svg"
+import sliders from "../../../public/sliders.svg"
+import logOut from "../../../public/logOut.svg"
+
 
 export default function UserDashboard() {
    
   return( 
-    <div className="flex lg:flex-row md:flex-col mt-5 pt-20 font-serif">
-      <div className="lg:ml-10">
-        <img
-          src="https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/f7ac1c50-13d0-4661-8842-bc071de27036/1-multi-series-bar-chart-800w-opt.png"
-          height={250}
-          width={400}
-        />
-        Student Progess
-      </div>
-      <div className="lg:ml-20">
-        <h3>My Courses</h3>
-        <ul className="text-sm mt-2">
-          <li className="mt-1">
-            Math 101 introduction to first principals
-          </li>
-          <li className="mt-1">
-            Geomety 201 introduction to first principals
-          </li>
-          <li className="mt-1">
-            Linear Algebra 301 introduction to first principals
-          </li>
-          <li className="mt-1">
-            Math 101 introduction to first principals
-          </li>
-          <li className="mt-1">
-            Math 101 introduction to first principals
-          </li>
-       
-        </ul>
+    <div className="flex">
+      <div className="bg-dark-blue h-screen p-5 pt-8 w-72 flex justify-center">
+        <div className="">
+          <img 
+            className="h-20 mx-auto object-cover rounded-full w-20 border-2 mt-10"
+            src="https://images.pexels.com/photos/7275385/pexels-photo-7275385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          />
+          <div className="sm:mt-10 dm:mt-10 lg:mt-20">
+          <Image
+            src={user}
+            width={40}
+            height="auto"
+            className="ml-5 mb-2"
+          />
+          <spam className="flex justify-center text-white text-sm">
+            Profole
+          </spam>
+          
+          </div>
+          <div className="sm:mt-4 dm:mt-6 lg:mt-10">
+          <Image
+            src={book}
+            width={40}
+            height="auto"
+            className="ml-5 mb-2"
+          />
+          <spam className="flex justify-center text-white text-sm">
+            Lessons
+          </spam>
+          
+          </div>
 
-      </div>
+          <div className="sm:mt-4 dm:mt-6 lg:mt-10">
+            <Image
+              src={trending}
+              width={40}
+              height="auto"
+              className="ml-5 mb-2"
+            />
+            <spam className="flex justify-center text-white text-sm">
+              My Progress
+            </spam>
+          </div>
 
+          <div className="sm:mt-4 dm:mt-6 lg:mt-10">
+            <Image
+              src={sliders}
+              width={40}
+              height="auto"
+              className="ml-5 mb-2"
+            />
+            <spam className="flex justify-center text-white text-sm">
+              Accessibility
+            </spam>
+          </div>
+
+          
+          {/* <div className="flex sm:mt-8 dm:mt-12 lg:mt-20 text-sm">
+            <Image
+              src={logOut}
+              width={40}
+              height="auto"
+              className="ml-5 mb-2"
+            />
+            <spam className="flex items-center text-white text-sm ml-2">
+              Log out
+            </spam>
+          </div> */}
+        </div>
+      </div>
+     
+      <div className="p-7 bg-neutral-200 my-20 rounded-xl">
+        <div>
+          <h1 className="text-2xl font-semibold">
+            Dashboard
+          </h1>
+        </div>
+        <div>
+          <h1 className="mt-20 pr-72">Learning Today</h1>
+        </div>
+      </div>
+     
     </div>
   )
 }

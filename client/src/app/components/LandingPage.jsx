@@ -3,15 +3,16 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import logo from "../../../public/logo.svg"
+import Image from 'next/image'
 
 const navigation = [
-  { name: 'About', href: '#' },
-  { name: 'Courses', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'About us', href: '#' },
+  { name: 'Contact us', href: '#' },
+  { name: 'FAQ', href: '#' },
 ]
 
-export default function Home() {
+export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -21,11 +22,12 @@ export default function Home() {
           <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
+                <span className="sr-only">Learn Link</span>
+                <Image
+                  src={logo}
+                  width={40}
+                  height="auto"
+                  className="lg:ml-5 lg:mr-10"
                 />
               </a>
             </div>
@@ -128,8 +130,7 @@ export default function Home() {
                 Learn Link
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                fugiat veniam occaecat fugiat aliqua.
+              With the help of Adda, our ChatGPT-powered chatbot, we provide real-time accessibility feedback tailored to your needs. Adda is designed to be your best friend in learning, making math accessible to everyone, regardless of their abilities!
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
