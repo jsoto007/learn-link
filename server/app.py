@@ -11,7 +11,17 @@ from config import app, db, api, bcrypt
 from datetime import datetime
 
 # Import Models here
+<<<<<<< HEAD
+from models import db, User, Course, Lesson, ChatHistory
+
+#OpenAI Models here
+import openai
+from dotenv import load_dotenv
+import os
+
+=======
 from models import User, Course, Lesson
+>>>>>>> main
 
 # Views go here!
 
@@ -171,7 +181,7 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            response = make_response(user.to_dict(rules =('-lessons.courses.users', '-_password_hash')),200)
+            response = make_response(user.to_dict(rules =('-lessons.courses.users','-lessons.updated_at','-lessons.created_at', '-_password_hash', '-lessons.courses.created_at','-lessons.courses.description','-lessons.courses.end_date','-lessons.courses.learning_objective1','-lessons.courses.learning_objective2','-lessons.courses.learning_objective3','-lessons.courses.homework1','-lessons.courses.homework2','-lessons.courses.homework3','-lessons.courses.next_course_preview','-lessons.courses.score','-lessons.courses.start_date','-lessons.courses.updated_at','-lessons.courses.user_id', )),200)
         else:
             response = make_response({
             "error": "User not found"
@@ -401,6 +411,158 @@ class LessonByID(Resource):
 api.add_resource(LessonByID, '/lesson/<int:id>')
 
 #---------------------------------------------------------------------
+
+
+#-------------------------------This will be all the chatbot stuff-----------------
+# class Chatbot(Resource):
+#     def post(self, id):
+#         user = User.query.filter(User.id == id).first()
+#         print(user)
+#         load_dotenv()
+#         openai_api_key=os.getenv("OPENAI_API_KEY")
+        
+
+#         data = request.get_json()
+#         user_message = data.get('message')
+#         user_id = data.get('user_id')
+
+#         #timer / hit them with a Hi! How can I help you?
+#         # Also if user.chat_histories.length < 0 
+
+#         # So we'll basically be using if user.chat_histories.length < 0 and set a timer to send a message
+
+#         try:
+#             if user.chat_history and len(user.chat_history) > 1: 
+#                 response = openai.ChatCompletion.create(
+#                     model='gpt-3.5-turbo',
+#                     messages=[
+#                     {'role': 'system', 'content': f'You are Adda, our educational assistant chatbot. Please mention this when you initiate a conversation for the first time and say hello to {user.first_name}, and tell them that they can contact you whenever they need assistance.'},
+#                     {'role': 'user', 'content': user_message},
+#                     ],
+#                 )
+
+#                 bot_response = response['choices'][0]['message']['content']
+
+#                 chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+#                 db.session.add(chat_entry)
+#                 db.session.commit()
+
+#                 return {'botResponse': bot_response}, 200
+#             elif len(user.chat_history) < 1:
+#                 response = openai.ChatCompletion.create(
+#                     model='gpt-3.5-turbo',
+#                     messages=[
+#                     {'role': 'system', 'content': f"You are Adda, our educational assistant chatbot, say hello and ask about acccesibility options. "},
+#                     {'role': 'user', 'content': user_message},
+#                     ],
+#                 )
+
+#                 bot_response = response['choices'][0]['message']['content']
+
+#                 chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+#                 db.session.add(chat_entry)
+#                 db.session.commit()
+
+#                 return {'botResponse': bot_response}, 200
+
+#         except Exception as e:
+#             print('Error:', str(e))
+#             return {'error': 'An error occurred'}, 500
+
+# api.add_resource(Chatbot, '/adda/chat/<int:id>')
+
+class Chatbot(Resource):
+    def post(self):
+        load_dotenv()
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+
+        courses = [course.to_dict( rules = ('-users._password_hash','-users.bio', '-users.avatar', '-users.created_at',)) for course in Course.query.all()]
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        #timer / hit them with a Hi! How can I help you?
+        # Also if user.chat_histories.length < 0 
+
+        # So we'll basically be using if user.chat_histories.length < 0 and set a timer to send a message
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                {'role': 'system', 'content': f"You are Adda, our educational assistant, say hello and ask about acccesibility options. Your name is in the initial message, So there's no reason to say Hello! I'm Adda again."
+                 },
+                {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id = user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(Chatbot, '/adda/chat/')
+
+
+# Can use this below with a new route to essentially have Adda do whatever, want a route with a pure focus of assisting in course 1? Doable. We'll look over this shortly
+
+class AddaCourseTwo(Resource):
+    def post(self, id):
+        load_dotenv()
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+
+        course = Course.query.filter(Course.id == id).first()
+        lessons = course.lessons
+
+        data = request.get_json()
+        user_message = data.get('message')
+        user_id = data.get('user_id')
+
+        lesson_list = "\n".join([f"{i+1}. {lesson.title}\n{lesson.content}" for i, lesson in enumerate(lessons)])
+
+        try:
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {
+                        'role': 'system',
+                        'content': (
+                            f"You are Adda, our educational assistant chatbot. "
+                            f"Please keep it simple, no highly scientific words. "
+                            f"I'm here to assist you with your learning journey. "
+                            f"Feel free to ask any questions or request help related to the following lessons:\n\n"
+                            f"Assist them with the course content, ask for what they need help with\n"
+                            f"{lesson_list}\n"
+                            f"If they are asking for assistance, focus on the content portion,"
+                            f"If any of the questions fall outside of the scope of these educational courses and content, please remind them you can only assist with educational queries. For example, do not talk about religion, politics, geo-political conditions, etc."
+                            f"or if you have any other educational queries."
+                        ),
+                    },
+                    {'role': 'user', 'content': user_message},
+                ],
+            )
+
+            bot_response = response['choices'][0]['message']['content']
+
+            chat_entry = ChatHistory(user_message=user_message, bot_response=bot_response, user_id=user_id)
+            db.session.add(chat_entry)
+            db.session.commit()
+
+            return {'botResponse': bot_response}, 200
+        except Exception as e:
+            print('Error:', str(e))
+            return {'error': 'An error occurred'}, 500
+
+api.add_resource(AddaCourseTwo, '/adda/course/<int:id>/chat/')
+
 
 if __name__ == '__main__':
     app.run( port=5555, debug=True )

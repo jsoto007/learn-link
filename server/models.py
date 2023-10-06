@@ -23,7 +23,42 @@ class User( db.Model, SerializerMixin ):
     avatar = db.Column( db.String, default="https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png" )
     bio = db.Column( db.String )
 
+    #Disability
+    # visual_impairment = db.Column( db.String )
+    # hearing_impairment = db.Column( db.String )
+    # motor_impairment = db.Column( db.String )
+    # cognitive_impairment = db.Column( db.String )
+    # Other = db.Column( db.String )
+
+    #Adaptability with learning experience
+
+    # adaptability_options = db.Column( db. String)
+
+    # Adjusting text size
+    # Using screen readers
+    # Customizing color schemes
+    # Keyboard shortcuts
+    # Other (Please specify)
     
+    #Crucial aspects
+
+    # crucial_aspects = db.Column( db.String )
+
+    #Clear and simple language
+    #Text-to-speech features
+    #Interactive transcripts
+    #Readable fonts and layouts
+    #Other (Please specify)
+
+    # ideal_feature = db.Column( db.String )
+
+    #Collaborative learning spaces
+    #Personalized learning plans
+    #Simplified navigation
+    #Enhanced text-to-speech
+    #Other (Please specify)
+
+
 
     #Relationships
     # courses = db.relationship( 'Course', backref = 'user' )
@@ -31,13 +66,16 @@ class User( db.Model, SerializerMixin ):
 
     courses = db.relationship('Course', back_populates='users')
     lessons = db.relationship('Lesson', back_populates='users')
+    chat_history = db.relationship('ChatHistory', back_populates='user')
+
 
     #Serialization Rules
     serialize_rules = (
         '-lessons.users', 
         '-courses.users', 
         '-courses.user_id',
-        '-courses.lessons'
+        '-courses.lessons',
+        '-chat_history.user',
         )
 
 
@@ -121,12 +159,24 @@ class Course( db.Model, SerializerMixin ):
     __tablename__ = 'courses'
 
     id = db.Column( db.Integer, primary_key = True )
+
     created_at = db.Column( db.DateTime, server_default=db.func.now() )
     updated_at = db.Column( db.DateTime, server_onupdate=db.func.now() )
 
     title = db.Column( db.String, nullable = False )
     description = db.Column( db.String )
     score = db.Column( db.Boolean, default = False )
+
+    learning_objective1 = db.Column(db.String)
+    learning_objective2 = db.Column(db.String)
+    learning_objective3 = db.Column(db.String)
+
+    homework1 = db.Column(db.String)
+    homework2 = db.Column(db.String)
+    homework3 = db.Column(db.String)
+
+    next_course_preview = db.Column(db.String)
+
     start_date = db.Column( db.DateTime, default = None, nullable = True )
     end_date = db.Column( db.DateTime, default = None, nullable = True )
 
@@ -203,6 +253,7 @@ class Lesson( db.Model, SerializerMixin ):
 
     title = db.Column( db.String, nullable = False )
     content = db.Column( db.String, nullable = False )
+
     duration = db.Column( db.String, nullable = False )
     score = db.Column( db.Boolean, default = False )
 
@@ -271,6 +322,19 @@ class Lesson( db.Model, SerializerMixin ):
         else:
             self.validation_errors.append( "User not found." )
 
+
+
+class ChatHistory(db.Model, SerializerMixin):
+    __tablename__ = 'chat_histories'
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_message = db.Column(db.String(255))
+    bot_response = db.Column(db.String(255))
+
+    user_id = db.Column( db.Integer, db.ForeignKey( 'users.id' ) )
+    user = db.relationship('User', back_populates='chat_history')
+
+    serialize_rules = ('-user.chat_history', )
 
 # Model template!
 # class NameOfClass( db.Model ):
