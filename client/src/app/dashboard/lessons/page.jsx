@@ -1,10 +1,7 @@
+import React from 'react'
 
-
-export default function Lessons() {
-
-  return(
-    <div>
-      Hello from Lessons
-    </div>
+export default function page() {
+  return (
+    <div>page</div>
   )
 }

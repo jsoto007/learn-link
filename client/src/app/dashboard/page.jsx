@@ -4,8 +4,8 @@ import UserDashboard from "../components/UserDashboard";
 function Dashboard() {
 
   return(
-    <div>
-      <NavBar />
+    <div className="bg-dark-blue">
+
       <UserDashboard />
     </div>
   )
