@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import AddaBot from './components/AddaBot'
 
 const navigation = [
   { name: 'About', href: '#' },
@@ -10,9 +11,17 @@ const navigation = [
   { name: 'Marketplace', href: '#' },
   { name: 'Company', href: '#' },
 ]
-
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false)
+
+  const openChatbot = () => {
+    setIsChatbotOpen(true);
+  };
+
+  const closeChatbot = () => {
+    setIsChatbotOpen(false);
+  };
 
   return (
     <main>
@@ -156,6 +165,7 @@ export default function Home() {
               }}
             />
           </div>
+          <AddaBot />
         </div>
       </div>
     </main>

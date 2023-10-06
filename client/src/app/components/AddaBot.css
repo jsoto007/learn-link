@@ -1,0 +1,138 @@
+/* styles/Chatbot.module.css */
+
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0078d4;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .chatbot.open {
+    transform: translateX(-200px);
+  }
+  
+  .chatbot-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .chatbot-window {
+    position: fixed;
+    bottom: 20px;
+    right: -200px;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s;
+    overflow: hidden;
+  }
+  
+  .chatbot-content {
+    /* Style your chatbot messages here */
+    padding: 20px;
+  }
+  
+
+  .ai-message {
+    border-radius: 0px 24px 24px 24px;
+    background: var(--Secondary, #031C43);
+    display: flex;
+    width: 300px;
+    padding: 16px;
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--Background, #F5F5F5); /* Text color */
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 200%; /* 40px */
+  }
+  
+  /* Styles for user messages */
+  .user-message {
+    border-radius: 24px 24px 0px 24px;
+    background: var(--Foreground, #333);
+    display: flex;
+    padding: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--Background, #F5F5F5); /* Text color */
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 200%; /* 40px */
+    width: 300px;
+    margin-left: auto;
+  }
+
+  .typing-dot {
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    opacity: 0;
+    animation: typing 2.5s infinite;
+    animation-delay: 0.5s;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: 1s;
+  }
+  
+  .typing-dot:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+  
+  .typing-dot:nth-child(4) {
+    animation-delay: 2s;
+  }
+  
+  @keyframes typing {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-4px); /* First dot moves up */
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(0); /* Second dot moves up */
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-4px); /* Third dot moves up */
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(0); /* Fourth dot moves up */
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+  }
